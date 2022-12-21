@@ -1,0 +1,33 @@
+body {
+  background-color: #f2f1ff;
+  font-family: "Axiforma";
+  font-style: normal;
+  font-weight: 400;
+  color: #000000;
+}
+p {
+  font-size: 18px;
+  line-height: 33px;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 54px;
+  line-height: 140%;
+  letter-spacing: 0.5px;
+}
+h2 {
+  font-weight: 800;
+  font-size: 45px;
+  line-height: 140%;
+  letter-spacing: 0.5px;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.form__error-text {
+  color: #dc3545;
+  margin: 5px;
+  font-size: 16px;
+}
