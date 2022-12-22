@@ -708,4 +708,9 @@ input::-moz-focus-outer {
 .slide-wrapper .slide.slide-5 .form-group input::placeholder {
   color: #8184a3 !important;
 }
+
+.slide-wrapper .slide.slide-thanks .slide-header {
+  margin-top: 30px;
+  text-align: center;
+}
 /*# sourceMappingURL=main.css.map */

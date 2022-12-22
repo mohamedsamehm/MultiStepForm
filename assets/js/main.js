@@ -45,13 +45,21 @@ ready(function () {
     });
 
   document
-    .querySelector("#services #service-9")
+    .querySelector("#services #other-service")
     .addEventListener("input", function (e) {
       const { target } = e;
       if (target.checked) {
-        document.getElementById("other-service").removeAttribute("hidden");
+        document
+          .getElementById("other-service-input")
+          .removeAttribute("hidden");
+        document
+          .getElementById("other-service-input")
+          .setAttribute("name", "other-service");
       } else {
-        document.getElementById("other-service").setAttribute("hidden", true);
+        document
+          .getElementById("other-service-input")
+          .setAttribute("hidden", true);
+        document.getElementById("other-service-input").removeAttribute("name");
       }
     });
 
@@ -67,6 +75,9 @@ ready(function () {
           document
             .querySelector("#progress-form__panel-3 .form-group input")
             .removeAttribute("hidden");
+          document
+            .querySelector("#progress-form__panel-3 .form-group input")
+            .setAttribute("name", "website-url");
         } else {
           document
             .querySelector("#progress-form__panel-3 .form-group")
@@ -74,6 +85,9 @@ ready(function () {
           document
             .querySelector("#progress-form__panel-3 .form-group input")
             .setAttribute("hidden", true);
+          document
+            .querySelector("#progress-form__panel-3 .form-group input")
+            .removeAttribute("name");
         }
       });
     });
@@ -586,39 +600,19 @@ ready(function () {
    * Returns the user's IP address.
    */
 
-  async function getIP(url = "https://api.ipify.org?format=json") {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    return response.json();
-  }
-
-  /*****************************************************************************
-   * POSTs to the specified endpoint.
-   */
-
-  async function postData(url = "", data = {}) {
+  async function sendHook(
+    data,
+    url = "https://hook.us1.make.com/jtb39t9gkdl574jplekb5gvsnuxnf8eu"
+  ) {
     const response = await fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(data),
     });
-
     if (!response.ok) {
       throw new Error(response.statusText);
     }
 
-    return response.json();
+    return response.ok;
   }
 
   /****************************************************************************/
@@ -635,8 +629,10 @@ ready(function () {
 
   /****************************************************************************/
 
-  function handleSuccess(response) {
+  function handleSuccess() {
     const thankYou = progressForm.querySelector("#progress-form__thank-you");
+
+    console.log(thankYou);
 
     // Clear all HTML Nodes that are not the thank you panel
     while (progressForm.firstElementChild !== thankYou) {
@@ -645,8 +641,10 @@ ready(function () {
 
     thankYou.removeAttribute("hidden");
 
-    // Logging the response from httpbin for quick verification
-    console.log(response);
+    document.getElementById("thanks-lottie").stop();
+    setTimeout(() => {
+      document.getElementById("thanks-lottie").play();
+    }, 100);
   }
 
   /****************************************************************************/
@@ -667,7 +665,7 @@ ready(function () {
         Please try again. If the issue persists, please contact our support
         team. Error message: ${error}`;
 
-      submitButton.parentElement.prepend(errorText);
+      submitButton.parentElement.parentElement.append(errorText);
     }
   }
 
@@ -688,34 +686,23 @@ ready(function () {
 
         // Prepare the data
         const formData = new FormData(form),
-          formTime = new Date().getTime(),
-          formFields = [];
+          formFields = {
+            services: [],
+          };
 
         // Format the data entries
         for (const [name, value] of formData) {
-          formFields.push({
-            name: name,
-            value: value,
-          });
+          if (name == "services") {
+            formFields["services"].push(value);
+          } else {
+            formFields[name] = value;
+          }
         }
 
-        // Get the user's IP address (for fun)
-        // Build the final data structure, including the IP
-        // POST the data and handle success or error
-        getIP()
-          .then((response) => {
-            return {
-              fields: formFields,
-              meta: {
-                submittedAt: formTime,
-                ipAddress: response.ip,
-              },
-            };
-          })
-          .then((data) => postData(API, data))
-          .then((response) => {
+        sendHook(formFields)
+          .then(() => {
             setTimeout(() => {
-              handleSuccess(response);
+              handleSuccess();
             }, 5000); // An artificial delay to show the state of the submit button
           })
           .catch((error) => {
@@ -774,10 +761,9 @@ ready(function () {
         ((this.rangeElement.value - this.options.min) /
           (this.options.max - this.options.min)) *
         100;
-      const left =
-        ((this.rangeElement.value - this.options.min) / this.options.max) *
-        document.querySelector(".range__slider").offsetWidth;
-      valueElement.style.left = `${left}px`;
+      valueElement.style.left = `${
+        ((this.rangeElement.value - this.options.min) / this.options.max) * 100
+      }%`;
       if (window.innerWidth <= 730) {
         if (this.rangeElement.value < 10000) {
           document
