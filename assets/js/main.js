@@ -606,13 +606,17 @@ ready(function () {
   ) {
     const response = await fetch(url, {
       method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(data),
     });
     if (!response.ok) {
       throw new Error(response.statusText);
     }
 
-    return response.ok;
+    // return response.ok;
   }
 
   /****************************************************************************/
@@ -631,8 +635,6 @@ ready(function () {
 
   function handleSuccess() {
     const thankYou = progressForm.querySelector("#progress-form__thank-you");
-
-    console.log(thankYou);
 
     // Clear all HTML Nodes that are not the thank you panel
     while (progressForm.firstElementChild !== thankYou) {
@@ -698,7 +700,6 @@ ready(function () {
             formFields[name] = value;
           }
         }
-
         sendHook(formFields)
           .then(() => {
             setTimeout(() => {
