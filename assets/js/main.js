@@ -564,13 +564,17 @@ ready(function () {
           invalidFields.forEach((field) => {
             reportValidity(field);
           });
+          window.scrollTo(0, document.body.scrollHeight);
 
           // Focus the first found invalid field for the user
           invalidFields[0].focus();
         });
     }
 
-    if (target.matches('[data-action="prev"]')) {
+    if (
+      target.matches('[data-action="prev"]') ||
+      target.parentElement.matches('[data-action="prev"]')
+    ) {
       // Revisit the previous step
       activateTab(currentStep - 1);
     }
@@ -770,7 +774,28 @@ ready(function () {
         ((this.rangeElement.value - this.options.min) /
           (this.options.max - this.options.min)) *
         100;
-      valueElement.style.left = Math.round(percentage) + "%";
+      const left =
+        ((this.rangeElement.value - this.options.min) / this.options.max) *
+        document.querySelector(".range__slider").offsetWidth;
+      valueElement.style.left = `${left}px`;
+      if (window.innerWidth <= 730) {
+        if (this.rangeElement.value < 10000) {
+          document
+            .querySelector(".range__value")
+            .classList.remove("mobile-right");
+          document.querySelector(".range__value").classList.add("mobile-left");
+        } else {
+          document
+            .querySelector(".range__value")
+            .classList.remove("mobile-left");
+          document.querySelector(".range__value").classList.add("mobile-right");
+        }
+      } else {
+        document
+          .querySelector(".range__value")
+          .classList.remove("mobile-right");
+        document.querySelector(".range__value").classList.remove("mobile-left");
+      }
       return (
         "background: linear-gradient(to right, #3022cd, #4A3AFF " +
         percentage +
@@ -779,7 +804,6 @@ ready(function () {
         "%, #fff 100%)"
       );
     }
-
     updateSlider(newValue) {
       this.valueElement.innerHTML = this.asMoney(this.rangeElement.value);
       this.rangeElement.style = this.generateBackground(
