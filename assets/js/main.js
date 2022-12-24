@@ -704,12 +704,12 @@ ready(function () {
           .then(() => {
             setTimeout(() => {
               handleSuccess();
-            }, 5000); // An artificial delay to show the state of the submit button
+            }, 500); // An artificial delay to show the state of the submit button
           })
           .catch((error) => {
             setTimeout(() => {
               handleError(error);
-            }, 5000); // An artificial delay to show the state of the submit button
+            }, 500); // An artificial delay to show the state of the submit button
           });
       })
       .catch((invalidFields) => {
