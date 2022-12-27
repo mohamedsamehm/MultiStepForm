@@ -469,9 +469,28 @@ ready(function () {
    * current step to match the tab's index.
    */
 
-  function activateTab(index) {
+  function activateTab(index, towards = 1) {
     const thisPanel = tabPanels[index];
-
+    // increase progress bar
+    let width = Math.floor(
+      (document.querySelector(".progress-bar").offsetWidth /
+        document.querySelector(".progress").offsetWidth) *
+        100
+    );
+    console.log(width);
+    if (towards == 1) {
+      if (index == 1) {
+        document.querySelector(".progress-bar").style.width = `${width + 15}%`;
+      } else {
+        document.querySelector(".progress-bar").style.width = `${width + 25}%`;
+      }
+    } else {
+      if (index == 0) {
+        document.querySelector(".progress-bar").style.width = `${width - 15}%`;
+      } else {
+        document.querySelector(".progress-bar").style.width = `${width - 25}%`;
+      }
+    }
     // Close all other tabs
     deactivateTabs();
 
@@ -590,7 +609,7 @@ ready(function () {
       target.parentElement.matches('[data-action="prev"]')
     ) {
       // Revisit the previous step
-      activateTab(currentStep - 1);
+      activateTab(currentStep - 1, -1);
     }
   });
 
