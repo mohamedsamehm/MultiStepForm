@@ -1,144 +1,32 @@
 .slide-wrapper {
-  width: 100%;
-  margin: 0;
-  padding: 50px 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  @media (max-width: 720px) {
-    padding-bottom: 130px;
-  }
-  p {
-    font-size: 16px;
-    line-height: 33px;
-  }
-  [hidden] {
-    display: none !important;
-  }
-  .input-group {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    width: 100%;
-    input {
-      margin-left: -1px;
-      border-top-left-radius: 0 !important;
-      border-bottom-left-radius: 0 !important;
-    }
-  }
-  button,
-  input,
-  optgroup,
-  select,
-  textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-  }
-  .form__error-text {
-    color: #dc3545;
-    margin: 5px;
-    font-size: 16px;
-  }
-  fieldset {
-    border: none !important;
-    padding: 0 !important;
-  }
+  min-height: 100vh;
+  max-width: 730px;
+  padding: 45px 0;
   form {
-    width: 100%;
-    height: 100%;
-    max-width: 730px;
-    margin: auto;
+    flex: 1;
   }
-  .slide {
-    .slide-header {
-      margin-bottom: 40px;
-      p {
-        color: #8184a3;
-        margin: 0 !important;
-        @media (max-width: 720px) {
-          line-height: 150%;
-        }
-      }
+  .slide-header {
+    .logo {
+      margin: 0 !important;
     }
-    .title {
-      font-size: 32px;
-      line-height: 51px;
+  }
+  .slide-body {
+    legend {
+      font-size: 28px;
+      line-height: 100%;
       color: #191933;
-      margin-bottom: 6px;
-      padding: 0 !important;
-      @media (max-width: 720px) {
-        font-size: 24px;
-        line-height: 130%;
-        margin-bottom: 20px;
-      }
-    }
-    .slide-footer {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      margin-top: 60px;
-      @media (max-width: 720px) {
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-        background-color: #ffffff;
-        position: fixed;
-        bottom: 0;
-        left: 0px;
-        padding: 24px;
-        margin-top: 0;
-      }
-      button[data-action="next"],
-      .btn-next {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 1;
-        height: 56px;
-        background: #4a3aff;
-        font-weight: 600;
+      margin-bottom: 16px;
+      & + p {
+        color: #8184a3;
         font-size: 18px;
         line-height: 100%;
-        letter-spacing: 0.5px;
-        color: #ffffff;
-        border-radius: 10px;
-        transition: backgroundColor 0.3s ease-in-out;
-        &:hover {
-          background-color: #3022cd;
-        }
-      }
-      button[data-action="prev"] {
-        border: none;
-        height: 56px;
-        width: 90px;
-        margin-right: 16px;
-        background: #bbbae7;
-        border-radius: 10px;
-        transition: all 0.3s ease-in-out;
-        &:hover {
-          background-color: rgba(21, 28, 52, 0.15);
-          img {
-            transform: translate(-10px);
-          }
-        }
-        img {
-          transition: transform 0.2s ease-in-out;
-          max-width: 24px;
-        }
+        margin-bottom: 40px;
       }
     }
     &.slide-1 {
       .form-checkbox-wrapper {
-        display: grid;
         grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        @media (max-width: 720px) {
-          grid-template-columns: 1fr;
-        }
+        gap: 10px;
         .label-wrapper {
           input {
             position: absolute;
@@ -150,10 +38,10 @@
             }
           }
           label {
-            cursor: pointer;
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            cursor: pointer;
             background: #ffffff;
             border: 1px solid #ffffff;
             box-shadow: 0px 0px 24px rgba(74, 58, 255, 0.1);
@@ -161,7 +49,7 @@
             font-size: 16px;
             line-height: 33px;
             height: 56px;
-            padding: 12px 0 12px 30px;
+            padding: 14px 30px 14px 30px;
             color: #191933;
             transition: all 0.2s ease-in-out;
             .checkbox-icon {
@@ -183,10 +71,11 @@
         font-size: 16px;
         line-height: 33px;
         height: 100px;
+        resize: none;
         color: #8184a3;
         width: 100%;
         padding: 12px 30px;
-        margin-top: 42px;
+        margin-top: 10px;
         &::placeholder {
           color: #8184a3;
           font-style: normal;
@@ -196,10 +85,7 @@
     }
     &.slide-2 {
       .form-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 30px;
+        gap: 10px;
         .label-wrapper {
           input {
             position: absolute;
@@ -220,42 +106,25 @@
             box-shadow: 0px 0px 24px rgba(74, 58, 255, 0.1);
             border-radius: 8px;
             font-size: 16px;
-            line-height: 33px;
             min-height: 90px;
             padding: 17px 20px;
             color: #191933;
             transition: all 0.2s ease-in-out;
-            @media (max-width: 720px) {
-              min-height: 110px;
-              padding: 17px 10px;
-              p {
-                font-size: 12px !important;
-                line-height: 150% !important;
-              }
-              .radio-icon {
-                margin-right: 10px;
-              }
-            }
             .radio-icon {
               margin-right: 20px;
               img {
                 max-width: 56px;
               }
             }
-            div {
-              display: flex;
-              justify-content: center;
-              flex-direction: column;
+            span {
               strong {
                 color: #191933;
                 font-weight: 600;
                 font-size: 18px;
-                line-height: 33px;
               }
-              p {
-                margin-bottom: 0;
+              span {
                 font-size: 14px;
-                line-height: 18px;
+                line-height: 33px;
                 color: #8184a3;
               }
             }
@@ -267,13 +136,12 @@
       }
     }
     &.slide-3 {
-      .title {
+      legend {
         margin-bottom: 40px;
       }
       .form-wrapper {
-        display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 30px;
+        gap: 10px;
         .label-wrapper {
           &:first-of-type {
             input {
@@ -314,7 +182,6 @@
             box-shadow: 0px 0px 24px rgba(74, 58, 255, 0.1);
             border-radius: 8px;
             font-size: 18px;
-            line-height: 33px;
             height: 56px;
             color: #191933;
             transition: all 0.2s ease-in-out;
@@ -331,7 +198,6 @@
               margin-top: -3px;
               transition: all 400ms ease;
             }
-
             &::after {
               content: "";
               position: absolute;
@@ -365,7 +231,7 @@
           border-radius: 8px;
           height: 56px;
           font-size: 18px;
-          padding: 12px;
+          padding: 12px 24px;
           width: 100%;
           &::placeholder {
             color: #bfc3f0;
@@ -374,12 +240,23 @@
       }
     }
     &.slide-5 {
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        &:not(:last-of-type) {
-          margin-bottom: 24px;
+      legend {
+        & + p {
+          line-height: 160%;
         }
+      }
+      fieldset > .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group-wrapper {
+        gap: 10px;
+        .form-group {
+          margin-bottom: 0 !important;
+          flex: 1 !important;
+          min-width: 300px !important;
+        }
+      }
+      .form-group {
         label {
           font-size: 16px;
           line-height: 30px;
@@ -396,15 +273,12 @@
             border-radius: 8px 0px 0px 8px;
             border: 1px solid #bfc3f0;
             background: #fdfeff;
-            padding: 16px 18px;
+            padding: 17px;
             line-height: 100%;
             height: 56px;
             img {
-              margin-right: 10px;
-              max-width: 40px;
-              @media (max-width: 720px) {
-                max-width: 30px !important;
-              }
+              margin-right: 8px;
+              max-width: 24px;
             }
             span {
               font-weight: 400;
@@ -432,27 +306,46 @@
       }
     }
     &.slide-thanks {
-      .slide-header {
+      h2 {
+        line-height: 150%;
         margin-top: 30px;
         text-align: center;
       }
     }
   }
-}
-body {
-  background-color: #f2f1ff !important;
-  font-family: "Axiforma" !important;
-}
-.progress {
-  background: #b6b6b666;
-  .progress-bar {
-    background: #4a3aff;
-    width: 10%;
-    will-change: width;
-    transition: width 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    -webkit-transition: width 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    -moz-transition: width 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    -ms-transition: width 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    -o-transition: width 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  .slide-footer {
+    button {
+      border-radius: 10px;
+      border: none;
+      height: 56px;
+    }
+    .btn-next {
+      flex: 1;
+      background: #4a3aff;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 100%;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      transition: backgroundColor 0.3s ease-in-out;
+      &:hover {
+        background-color: #3022cd;
+      }
+    }
+    .btn-back {
+      width: 90px;
+      background: #bbbae7;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background-color: rgba(21, 28, 52, 0.15);
+        img {
+          transform: translate(-10px);
+        }
+      }
+      img {
+        transition: transform 0.2s ease-in-out;
+        max-width: 24px;
+      }
+    }
   }
 }

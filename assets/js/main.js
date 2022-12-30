@@ -64,29 +64,29 @@ ready(function () {
     });
 
   document
-    .querySelectorAll('#progress-form__panel-3 input[type="radio"]')
+    .querySelectorAll('.slide-body.slide-3 input[type="radio"]')
     .forEach((element) => {
       element.addEventListener("input", function (e) {
         const { target } = e;
         if (target.value == "Yes") {
           document
-            .querySelector("#progress-form__panel-3 .form-group")
+            .querySelector(".slide-body.slide-3 .form-group")
             .removeAttribute("hidden");
           document
-            .querySelector("#progress-form__panel-3 .form-group input")
+            .querySelector(".slide-body.slide-3 .form-group input")
             .removeAttribute("hidden");
           document
-            .querySelector("#progress-form__panel-3 .form-group input")
+            .querySelector(".slide-body.slide-3 .form-group input")
             .setAttribute("name", "website-url");
         } else {
           document
-            .querySelector("#progress-form__panel-3 .form-group")
+            .querySelector(".slide-body.slide-3 .form-group")
             .setAttribute("hidden", true);
           document
-            .querySelector("#progress-form__panel-3 .form-group input")
+            .querySelector(".slide-body.slide-3 .form-group input")
             .setAttribute("hidden", true);
           document
-            .querySelector("#progress-form__panel-3 .form-group input")
+            .querySelector(".slide-body.slide-3 .form-group input")
             .removeAttribute("name");
         }
       });
@@ -472,25 +472,7 @@ ready(function () {
   function activateTab(index, towards = 1) {
     const thisPanel = tabPanels[index];
     // increase progress bar
-    let width = Math.floor(
-      (document.querySelector(".progress-bar").offsetWidth /
-        document.querySelector(".progress").offsetWidth) *
-        100
-    );
-    console.log(width);
-    if (towards == 1) {
-      if (index == 1) {
-        document.querySelector(".progress-bar").style.width = `${width + 15}%`;
-      } else {
-        document.querySelector(".progress-bar").style.width = `${width + 25}%`;
-      }
-    } else {
-      if (index == 0) {
-        document.querySelector(".progress-bar").style.width = `${width - 15}%`;
-      } else {
-        document.querySelector(".progress-bar").style.width = `${width - 25}%`;
-      }
-    }
+    document.querySelector(".progress-bar").style.width = `${index * 25}%`;
     // Close all other tabs
     deactivateTabs();
 
@@ -501,40 +483,16 @@ ready(function () {
 
     // Update the current step with the interacted tab's index value
     currentStep = index;
-  }
-
-  /*****************************************************************************
-   * Expects an event from a keydown listener.
-   */
-
-  function arrowTab(e) {
-    const { keyCode, target } = e;
-
-    /**
-     * If the current tab has an enabled next/previous sibling, activate it.
-     * Otherwise, activate the tab at the beginning/end of the list.
-     */
-
-    const targetPrev = target.previousElementSibling,
-      targetNext = target.nextElementSibling,
-      targetFirst = target.parentElement.firstElementChild,
-      targetLast = target.parentElement.lastElementChild;
-
-    const isDisabled = (node) => node.hasAttribute("aria-disabled");
-
-    switch (keyCode) {
-      case 37: // Left arrow
-        if (progressForm.contains(targetPrev) && !isDisabled(targetPrev)) {
-          activateTab(currentStep - 1);
-        }
-        break;
-      case 39: // Right arrow
-        if (progressForm.contains(targetNext) && !isDisabled(targetNext)) {
-          activateTab(currentStep + 1);
-        } else if (!isDisabled(targetFirst)) {
-          activateTab(0);
-        }
-        break;
+    if (currentStep == 4) {
+      document.querySelector(".btn-next").innerHTML = "Submit";
+      document.querySelector(".btn-next").removeAttribute("data-action");
+      setTimeout(() => {
+        document.querySelector(".btn-next").setAttribute("type", "submit");
+      }, 100);
+    } else {
+      document.querySelector(".btn-next").innerHTML = "Next Step";
+      document.querySelector(".btn-next").setAttribute("type", "button");
+      document.querySelector(".btn-next").setAttribute("data-action", "next");
     }
   }
 
@@ -591,6 +549,10 @@ ready(function () {
         .then(() => {
           // Progress to the next step
           activateTab(currentStep + 1);
+
+          if (currentStep > 0) {
+            document.querySelector(".btn-back").removeAttribute("hidden");
+          }
         })
         .catch((invalidFields) => {
           // Show errors for any invalid fields
@@ -610,6 +572,10 @@ ready(function () {
     ) {
       // Revisit the previous step
       activateTab(currentStep - 1, -1);
+
+      if (currentStep == 0) {
+        document.querySelector(".btn-back").setAttribute("hidden", true);
+      }
     }
   });
 
@@ -634,8 +600,7 @@ ready(function () {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
-
-    // return response.ok;
+    return response.ok;
   }
 
   /****************************************************************************/
@@ -660,6 +625,7 @@ ready(function () {
       progressForm.removeChild(progressForm.firstElementChild);
     }
 
+    document.querySelector(".slide-footer").remove();
     thankYou.removeAttribute("hidden");
 
     document.getElementById("thanks-lottie").stop();

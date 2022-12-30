@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Axiforma";
+  font-display: auto;
+  font-weight: 800;
+  src: url("./Axiforma-ExtraBold.ttf") format("TrueType");
+}
+
+@font-face {
+  font-family: "Axiforma";
+  font-display: auto;
+  font-weight: 700;
+  src: url("./Axiforma-Bold.ttf") format("TrueType");
+}
+
+@font-face {
+  font-family: "Axiforma";
+  font-display: auto;
+  font-weight: 400;
+  src: url("./Axiforma-Regular.ttf") format("TrueType");
+}
