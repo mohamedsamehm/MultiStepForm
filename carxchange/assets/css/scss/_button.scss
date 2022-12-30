@@ -1,0 +1,12 @@
+.btn.btn-primary {
+  background-color: #127bbf;
+  border: 1px solid #127bbf !important;
+  border-radius: 0.375rem !important;
+  letter-spacing: 0 !important;
+  text-transform: initial !important;
+  font-size: 1rem !important;
+  &:hover {
+    background-color: #0f649b !important;
+    border-color: #0f649b !important;
+  }
+}

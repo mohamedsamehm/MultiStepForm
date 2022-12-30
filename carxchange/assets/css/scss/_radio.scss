@@ -1,0 +1,97 @@
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.radio-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  &.radio-column {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  &.radio-row {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr))
+  }
+  &.radio-center {
+    .label-wrapper {
+      label {
+        justify-content: center !important;
+        align-items: center !important;
+      }
+    }
+  }
+  &:not(.no-radio) {
+    .label-wrapper {
+      label {
+        justify-content: space-between;
+        align-items: center;
+        span.text {
+          max-width: calc(100% - 27px);
+        }
+      }
+      input[type="radio"]:checked {
+        & + label:after {
+          content: "";
+          height: 16px;
+          width: 16px;
+          background: #216fe0;
+          border-radius: 100%;
+          border: 3px solid #fff;
+          box-shadow: 0px 0px 0px 2px #0066ff;
+          @media (max-width: 575.98px) {
+            height: 12px;
+            width: 12px;
+            border: 2px solid #fff;
+          }
+        }
+      }
+    }
+  }
+  &.no-radio {
+    @media (max-width: 575.98px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .label-wrapper {
+      label {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+    }
+  }
+  .label-wrapper {
+    img {
+      height: auto;
+      max-height: 50px;
+      max-width: 90px;
+      object-fit: contain;
+      @media (max-width: 575.98px) {
+        max-height: 35px;
+        max-width: 50px;
+      }
+    }
+    label {
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      padding: 20px 25px;
+      box-sizing: border-box;
+      border: 2px solid #e1e2e7;
+      border-radius: 10px;
+      transition: box-shadow 0.4s;
+      position: relative;
+      @media (max-width: 575.98px) {
+        padding: 15px 20px;
+        font-size: 13px;
+      }
+    }
+    input[type="radio"]:checked {
+      & + label {
+        border: 2px solid #216ee0;
+        background: #eaf1fe;
+        transition: ease-in 0.3s;
+      }
+    }
+  }
+}

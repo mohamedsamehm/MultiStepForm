@@ -1,0 +1,45 @@
+
+.datepicker table tr td, .datepicker table tr th {
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+}
+.prev, .next {
+  position: relative;
+  right: unset;
+  max-width: unset;
+  margin: unset;
+  display: flex;
+  justify-content: center;
+}
+.arrow-left::before {
+  content: " ";
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  display: block;
+}
+
+.arrow-right::before {
+  content: " ";
+  border-right: 2px solid #000;
+  border-top: 2px solid #000;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  display: block;
+}
+.arrow-right, .arrow-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.table-condensed>tbody>tr>td, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>td, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>thead>tr>th {
+  padding: 5px;
+}

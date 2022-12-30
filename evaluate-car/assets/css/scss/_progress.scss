@@ -1,0 +1,37 @@
+.progress-wrapper {
+  .progress-info {
+    font-size: 16px;
+    margin-bottom: 8px;
+    &::after {
+      content: attr(data-val) "% completed";
+    }
+    .back {
+      color: rgba(0,0,0,.87);
+      line-height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      svg {
+        margin-right: 3px;
+        width: 14px;
+        height: 14px;
+      }
+    }
+    i {
+      margin-right: 3px;
+      font-size: 11px;
+    }
+    button {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .progress {
+    background: #b6b6b666;
+    .progress-bar {
+      background: #127bbf;
+    }
+  }
+}

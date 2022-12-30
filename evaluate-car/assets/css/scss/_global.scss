@@ -1,0 +1,73 @@
+body {
+  background: #ecf2fe;
+}
+lottie-player {
+  max-width: 100% !important;
+}
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  left: 0;
+  margin: 40px auto;
+  max-width: 555px;
+}
+.carxchange {
+  // padding: 80px 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #ecf2fe;
+}
+.input-group {
+  border-color: #ced4da;
+  .input-group-text {
+    border-color: inherit;
+    background-color: transparent;
+    padding: .375rem 0rem .375rem .75rem;
+    border-right: none;
+    & + .input-group-text {
+      border-left: none;
+    }
+  }
+  input {
+    border-left: none !important;
+  }
+}
+
+.input-group:has(> .form-control.is-invalid), .was-validated .input-group:has(> .form-control:invalid) {
+  border-color: #dc3545;
+}
+.input-group:has(> .form-control.is-valid), .was-validated .input-group:has(> .form-control:valid) {
+  border-color: #198754;
+}
+
+.form-control {
+  line-height: 2.25;
+}
+
+.form-label {
+  font-size: 16px;
+  display: block;
+  line-height: 18px;
+  margin-bottom: 8px;
+  color: #000000;
+  font-weight: 700;
+}
+textarea {
+  min-height: 90px;
+  resize: none;
+  width: 100%;
+}
+
+.blur-price {
+  filter: blur(8px);
+  font-size: 24px;
+  text-decoration: line-through;
+  @media (max-width: 420px) {
+    display: block;
+    margin-top: 12px;
+  }
+}
