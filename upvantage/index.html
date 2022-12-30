@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS only -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/fonts/font.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <title>My Form</title>
+</head>
+
+<body>
+  <div class="slide-wrapper m-auto w-100 d-flex flex-column">
+    <div class="progress-wrapper w-100 mb-4">
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+
+    <form id="progress-form" novalidate class="d-flex flex-column justify-content-between">
+
+      <input type="hidden" name="gclid_field" id="gclid_field" value="">
+      <input type="hidden" name="fbclid_field" id="fbclid_field" value="">
+      <input type="hidden" name="userid_field" id="userid_field" value="">
+
+      <div class="slide-header">
+        <h1 class="logo text-center">
+          <img src="assets/images/logo.svg" alt="Logo">
+        </h1>
+      </div>
+      <!-- Start Step 1 -->
+      <div role="tabpanel" class="animated slide-body w-100 m-auto slide-1">
+        <fieldset class="form__field" id="services">
+          <legend class="text-md-center">What services are you looking for?</legend>
+          <p class="text-md-center">Please select the services that you are interested in.</p>
+          <div class="form-checkbox-wrapper d-grid justify-content-center align-items-center">
+            <div class="label-wrapper">
+              <input type="checkbox" id="service-1" name="services" value="Search Engine Optimization" required>
+              <label for="service-1">
+                <span class="checkbox-icon">
+                  <img src="assets/images/seo.svg" alt="Search Engine Optimization icon" class="icon">
+                </span>
+                <span>Search Engine Optimization</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="checkbox" id="service-2" name="services" value=" Pay-Per-Click Advertising">
+              <label for="service-2">
+                <span class="checkbox-icon">
+                  <img src="assets/images/adversing.svg" alt="Pay-Per-Click Advertising icon" class="icon">
+                </span>
+                <span>Pay-Per-Click Advertising</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="checkbox" id="service-3" name="services" value="Social Media Management">
+              <label for="service-3">
+                <span class="checkbox-icon">
+                  <img src="assets/images/smm.svg" alt="Social Media Management icon" class="icon">
+                </span>
+                <span>Social Media Management</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="checkbox" id="service-4" name="services" value="Social Media Marketing">
+              <label for="service-4">
+                <span class="checkbox-icon">
+                  <img src="assets/images/smmk.svg" alt="Social Media Marketing icon" class="icon">
+                </span>
+                <span>Social Media Marketing</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="checkbox" id="service-6" name="services" value="Email Marketing">
+              <label for="service-6">
+                <span class="checkbox-icon">
+                  <img src="assets/images/email-marketing.svg" alt="Email Marketing icon" class="icon">
+                </span>
+                <span>Email Marketing</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="checkbox" id="service-5" name="services" value="Content Marketing">
+              <label for="service-5">
+                <span class="checkbox-icon">
+                  <img src="assets/images/content-marketing.svg" alt="Content Marketing icon" class="icon">
+                </span>
+                <span>Content Marketing</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="checkbox" id="service-8" name="services" value="Website Design">
+              <label for="service-8">
+                <span class="checkbox-icon">
+                  <img src="assets/images/web-design.svg" alt="Website Design icon" class="icon">
+                </span>
+                <span>Website Design</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="checkbox" id="service-7" name="services" value="Graphic Design">
+              <label for="service-7">
+                <span class="checkbox-icon">
+                  <img src="assets/images/graphic-design.svg" alt="Graphic Design icon" class="icon">
+                </span>
+                <span>Graphic Design</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="checkbox" id="service-9" name="services" value="Video Production">
+              <label for="service-9">
+                <span class="checkbox-icon">
+                  <img src="assets/images/web-dev.svg" alt="Website Development icon" class="icon">
+                </span>
+                <span>Website Development</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="checkbox" id="other-service" name="services" value="Other">
+              <label for="other-service">
+                <span class="checkbox-icon">
+                  <img src="assets/images/other.svg" alt="Other icon" class="icon">
+                </span>
+                <span>Other</span>
+              </label>
+            </div>
+          </div>
+          <textarea placeholder="Please specify ..." id="other-service-input" required autocomplete="off"
+            hidden></textarea>
+        </fieldset>
+      </div>
+      <!-- End Step 1 -->
+
+      <!-- Start Step 2 -->
+      <div role="tabpanel" class="animated slide-body w-100 m-auto slide-2" hidden>
+        <fieldset class="form__field">
+          <legend class="text-md-center">What best describes you?</legend>
+          <p class="text-md-center">Please let us know what type of business describes you.</p>
+          <div class="form-wrapper d-flex flex-column justify-content-center">
+            <div class="label-wrapper">
+              <input type="radio" id="new-business" name="business" value="New Business" required>
+              <label for="new-business">
+                <span class="radio-icon">
+                  <img src="assets/images/standart.svg" alt="New Business Icon" class="icon">
+                </span>
+                <span class="d-block">
+                  <strong>New Business</strong>
+                  <span class="d-block">Haven't registered your business yet or been operating less than 12
+                    months.</span>
+                </span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="radio" id="existing-business" name="business" value="Existing Business" required>
+              <label for="existing-business">
+                <span class="radio-icon">
+                  <img src="assets/images/deluxe.svg" alt="Existing Business Icon" class="icon">
+                </span>
+                <span class="d-block">
+                  <strong>Existing Business</strong>
+                  <span class="d-block">Have been operating beyond 12 months.</span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <!-- End Step 2 -->
+
+      <!-- Start Step 3 -->
+      <div role="tabpanel" class="animated slide-body w-100 m-auto slide-3" hidden>
+        <fieldset class="form__field">
+          <legend class="text-md-center">Do you already have a website?</legend>
+          <div class="form-wrapper d-grid">
+            <div class="label-wrapper">
+              <input type="radio" id="website-yes" name="website" value="Yes" required>
+              <label for="website-yes">
+                <span>Yes</span>
+              </label>
+            </div>
+            <div class="label-wrapper">
+              <input type="radio" id="website-no" name="website" value="No" required>
+              <label for="website-no">
+                <span>No</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group" hidden>
+            <label for="website-url">Please provide the website URL:</label>
+            <input type="url" id="website-url" placeholder="www.your-website.com" required autocomplete="off" hidden>
+          </div>
+        </fieldset>
+      </div>
+      <!-- End Step 3 -->
+
+      <!-- Start Step 4 -->
+      <div role="tabpanel" class="animated slide-body w-100 m-auto slide-4" hidden>
+        <fieldset class="form__field">
+          <legend class="text-md-center">Please select your budget.</legend>
+          <p class="text-md-center">Please let us know the budget for your project.</p>
+          <div class="range">
+            <div class="range">
+              <div class="range__slider">
+                <input type="range" step="10" name="budget">
+                <span class="range__value"></span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <!-- End Step 4 -->
+
+      <!-- Start Step 5 -->
+      <div role="tabpanel" class="animated slide-body w-100 m-auto slide-5" hidden>
+        <fieldset class="form__field">
+          <legend class="text-md-center">Complete Submission</legend>
+          <p class="text-md-center">Thanks for taking the time to complete this form. Please enter your information
+            below
+            and
+            we will be in contact within 24 hours.</p>
+          <div class="form-group d-flex flex-column">
+            <label for="full-name">Full Name</label>
+            <input type="text" name="full_name" id="full-name" placeholder="First and Last name" required
+              autocomplete="off">
+          </div>
+          <div class="form-group-wrapper d-flex mb-4 mb-md-0 flex-wrap">
+            <div class="form-group d-flex flex-column">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="your-email@gmail.com" required
+                autocomplete="off">
+            </div>
+            <div class="form-group d-flex flex-column">
+              <label for="phone-number">Phone Number</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <img src="assets/images/flag.svg" alt="Phone Number Code">
+                  <span>+971</span>
+                </div>
+                <input type="text" name="phone_number" id="phone-number" placeholder="50 228 9392" required
+                  autocomplete="off" maxlength="9">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <!-- End Step 5 -->
+
+      <!-- Start Thank You -->
+      <div id="progress-form__thank-you" class="animated slide-body w-100 m-auto slide-thanks" hidden>
+        <lottie-player id="thanks-lottie" src="https://assets3.lottiefiles.com/private_files/lf30_nsqfzxxx.json"
+          background="transparent" speed="1" style="width: 200px; height: 200px;margin: auto;"></lottie-player>
+        <h2>Thank you, we will get back to you soon!.</h2>
+      </div>
+      <!-- End Thank You -->
+      <div class="slide-footer d-flex align-items-center w-100">
+        <button type="button" data-action="prev" class="btn-back me-3" hidden>
+          <img src="assets/images/arrow.svg" alt="Back Button">
+        </button>
+        <button type="button" data-action="next" class="btn-next">
+          Next step
+        </button>
+      </div>
+    </form>
+  </div>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- MAIN.JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
