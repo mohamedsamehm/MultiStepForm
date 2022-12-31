@@ -1,1528 +1,1376 @@
-$( document ).ready(function() {
-  'use strict';
+$(document).ready(function () {
+  "use strict";
   let years = [
-    "Older",
-    "2005",
-    "2006",
-    "2007",
-    "2008",
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-  ],
-  models = [
-    {
-      name: 'Abarth',
-      models: [
-        '595',
-      ]
-    },
-    {
-      name: 'Alfa Romeo',
-      models: [
-        '4C',
-        'Brera',
-        'Giulia',
-        'Giulietta',
-        'MiTo',
-        'Stelvio'
-      ]
-    },
-    {
-      name: 'Aston Martin',
-      models: [
-        "Cygnet",
-        "DB11",
-        "DB11",
-        "DB9",
-        "DB9",
-        "DBS",
-        "ONE-77",
-        "Rapide",
-        "Vanquish",
-        "V12 Vantage",
-        "V8 Vantage",
-        "Virage",
-      ]
-    },
-    {
-      name: 'Audi',
-      models: [
-        "A1",
-        "A3",
-        "RS3",
-        "A4",
-        "S4",
-        "A5",
-        "RS5",
-        "S5",
-        "A6",
-        "A7",
-        "A8",
-        "e-tron",
-        "Q2",
-        "Q3",
-        "Q5",
-        "Q7",
-        "Q8",
-        "R8",
-        "RSQ3",
-        "S3",
-        "RS4",
-        "RS6",
-        "S6",
-        "RS7",
-        "S7",
-        "S8",
-        "SQ5",
-        "RSQ8",
-        "SQ8",
-        "TT",
-        "TT RS",
-        "TTS",
-      ]
-    },
-    {
-      name: 'BAIC',
-      models: ['BJ40']
-    },
-    {
-      name: 'Bentley',
-      models: [
-        "Arnage",
-        "Bentayga",
-        "Brooklands",
-        "Continental",
-        "Flying Spur",
-        "Mulsanne",
-      ]
-    },
-    {
-      name: 'BMW',
-      models: [
-        "116",
-        "118",
-        "120",
-        "125",
-        "128",
-        "135",
-        "M135",
-        "218",
-        "220",
-        "225",
-        "228",
-        "230",
-        "M235",
-        "M240",
-        "316",
-        "318",
-        "320",
-        "323",
-        "325",
-        "328",
-        "330",
-        "335",
-        "340",
-        "Alpina B3 S",
-        "Alpina D3",
-        "420",
-        "428",
-        "430",
-        "435",
-        "440",
-        "Alpina B4",
-        "Alpina B4 S",
-        "Alpina D4",
-        "520",
-        "523",
-        "525",
-        "528",
-        "530",
-        "535",
-        "540",
-        "545",
-        "550",
-        "Alpina B5",
-        "Alpina D5 S",
-        "630",
-        "635",
-        "640",
-        "645",
-        "650",
-        "Alpina B6",
-        "730",
-        "735",
-        "740",
-        "745",
-        "750",
-        "760",
-        "Alpina B7",
-        "840",
-        "850",
-        "M850",
-        "i8",
-        "M2",
-        "M3",
-        "M4",
-        "M5",
-        "M6",
-        "X1",
-        "X2",
-        "Alpina XD3",
-        "X3",
-        "X4",
-        "X5",
-        "X5 M",
-        "X6",
-        "X6 M",
-        "X7",
-        "Z4",
-      ]
-    },
-    {
-      name: 'Borgward',
-      models: [
-        'BX5',
-        'BX7'
-      ]
-    },
-    {
-      name: 'Bugatti',
-      models: [
-        'Chiron',
-        'Veyron'
-      ]
-    },
-    {
-      name: 'Buick',
-      models: [
-        'Riviera'
-      ]
-    },
-    {
-      name: 'BYD',
-      models: []
-    },
-    {
-      name: 'Cadillac',
-      models: [
-        "ATS",
-        "CT4",
-        "CT5",
-        "CT6",
-        "CTS",
-        "DeVille",
-        "Escalade",
-        "SRX",
-        "STS",
-        "XT4",
-        "XT5",
-        "XT6",
-        "XTS",
-      ]
-    },
-    {
-      name: 'Changan',
-      models: [
-        "Alsvin",
-        "CS35",
-        "CS75",
-        "CS85",
-        "CS95",
-        "Eado",
-      ]
-    },
-    {
-      name: 'Chery',
-      models: [
-        "Arrizo3",
-        "Arrizo5",
-        "Arrizo7",
-        "E5",
-        "E8",
-        "Tiggo3",
-        "Tiggo5",
-        "Tiggo7",
-      ]
-    },
-    {
-      name: 'Chevrolet',
-      models: [
-        "Avalanche",
-        "Aveo",
-        "Blazer",
-        "Bolt EV",
-        "Camaro",
-        "Caprice",
-        "Captiva",
-        "Corvette",
-        "Cruze",
-        "Epica",
-        "Equinox",
-        "Express",
-        "Impala",
-        "Lumina",
-        "Malibu",
-        "Optra",
-        "Silverado",
-        "Sonic",
-        "Spark",
-        "Suburban",
-        "Tahoe",
-        "Trailblazer",
-        "Traverse",
-        "Trax",
-        "Uplander",
-      ]
-    },
-    {
-      name: 'Chrysler',
-      models: [
-        "200",
-        "300C",
-        "300S",
-        "300 SRT",
-        "Grand Voyager",
-        "Pacifica",
-        "PT Cruiser"
-      ]
-    },
-    {
-      name: 'Citroen',
-      models: [
-        "C-Elysee",
-        "C3",
-        "C4",
-        "C5",
-      ]
-    },
-    {
-      name: 'CMC',
-      models: []
-    },
-    {
-      name: 'Daewoo',
-      models: []
-    },
-    {
-      name: 'Daihatsu',
-      models: [
-        "Sirion",
-        "Terios",
-      ]
-    },
-    {
-      name: 'Dodge',
-      models: [
-        "Avenger",
-        "Caliber",
-        "Caravan",
-        "Challenger",
-        "Charger", 
-        "Dart",
-        "Durango",
-        "Journey",
-        "Magnum",
-        "Neon",
-        "Nitro",
-        "RAM", 
-        "Viper",
-      ]
-    },
-    {
-      name: 'Eagle',
-      models: ['Wrangler']
-    },
-    {
-      name: 'FAW-Bestune',
-      models: []
-    },
-    {
-      name: 'Ferrari',
-      models: [
-        "308 GTS",
-        "360",
-        "458",
-        "488",
-        "550",
-        "612",
-        "812 GTS",
-        "California",
-        "F12",
-        "F430",
-        "F599",
-        "F8 Tributo",
-        "FF",
-        "GTC4Lusso",
-        "LaFerrari",
-        "Portofino",
-        "Roma",
-      ]
-    },
-    {
-      name: 'FIAT',
-      models: [
-        "124 Spider",
-        "500",
-        "500C",
-        "500L",
-        "Ducato",
-        "Linea",
-      ]
-    },
-    {
-      name: 'Fisker',
-      models: ['Karma']
-    },
-    {
-      name: 'Ford',
-      models: [
-        "Bronco",
-        "Crown Victoria",
-        "EcoSport",
-        "Edge",
-        "Escape",
-        "Escort",
-        "Expedition",
-        "Explorer",
-        "F150",
-        "F250",
-        "Fiesta",
-        "Figo",
-        "Five Hundred",
-        "Flex",
-        "Focus",
-        "Fusion",
-        "Model A",
-        "Mondeo",
-        "Mustang",
-        "Ranger",
-        "Taurus",
-        "Transit",
-      ]
-    },
-    {
-      name: 'GAC',
-      models: [
-        'GS5',
-        'GS7',
-        'GS8'
-      ]
-    },
-    {
-      name: 'Geely',
-      models: [
-        "Emgrand 7",
-        "Emgrand 7 (RV)",
-        "Emgrand 8",
-        "Emgrand GT",
-        "Emgrand X7",
-        "GC6",
-        "GS Sport",
-        "GX2",
-      ]
-    },
-    {
-      name: 'Genesis',
-      models: [
-        "G70",
-        "G80",
-        "G90",
-        "GV70",
-        "GV80",
-        "Genesis",
-      ]
-    },
-    {
-      name: 'GMC',
-      models: [
-        "Acadia",
-        "Envoy",
-        "Savanna",
-        "Sierra",
-        "Terrain",
-        "Yukon",
-      ]
-    },
-    {
-      name: 'Great Wall',
-      models: ['Wingle 5']
-    },
-    {
-      name: 'Haval',
-      models: [
-        'H2',
-        'H6'
-      ]
-    },
-    {
-      name: 'Honda',
-      models: [
-        "Accord",
-        "Accord Crosstour",
-        "City",
-        "Civic",
-        "CR-V",
-        "HR-V",
-        "Jazz",
-        "MR-V",
-        "Odyssey",
-        "Odyssey J",
-        "Pilot",
-        "S2000", 
-      ]
-    },
-    {
-      name: 'Hongqi',
-      models: ['HS5']
-    },
-    {
-      name: 'HUMMER',
-      models: [
-        'H1',
-        'H2',
-        'H3'
-      ]
-    },
-    {
-      name: 'Hyundai',
-      models: [
-        "Accent",
-        "Azera",
-        "Centennial",
-        "Creta",
-        "Elantra",
-        "Equus",
-        "Genesis",
-        "Grand Santa Fe",
-        "Grand Santa Fe",
-        "Grandeur",
-        "H-1",
-        "i10",
-        "i20",
-        "i30",
-        "i40",
-        "Ioniq",
-        "Kona",
-        "Palisade",
-        "Santa Fe",
-        "Sonata",
-        "Trajet",
-        "Tucson",
-        "Veloster",
-        "Venue",
-        "Veracruz",
-      ]
-    },
-    {
-      name: 'Infiniti',
-      models: [
-        "EX35",
-        "EX37",
-        "FX35",
-        "FX37",
-        "FX50",
-        "G25",
-        "G35",
-        "G37",
-        "JX35",
-        "M37",
-        "M45",
-        "M50",
-        "M56",
-        "Q30",
-        "Q50",
-        "Q60",
-        "Q70",
-        "QX30",
-        "QX50",
-        "QX56",
-        "QX60",
-        "QX70",
-        "QX80",
-      ]
-    },
-    {
-      name: 'Isuzu',
-      models: [
-        'D-Max',
-        'MU-X"'
-      ]
-    },
-    {
-      name: 'JAC',
-      models: [
-        "J4",
-        "J5",
-        "S3",
-        "S7",
-      ]
-    },
-    {
-      name: 'Jaguar',
-      models: [
-        "E-Pace",
-        "E-Type",
-        "F-Pace",
-        "F-Type",
-        "I-Pace",
-        "S-Type",
-        "X-Type",
-        "XE",
-        "XF",
-        "XFR-S",
-        "XJ",
-        "XJ6",
-        "XK",
-        "XKR",
-      ]
-    },
-    {
-      name: 'Jeep',
-      models: [
-        "Cherokee",
-        "Commander",
-        "Compass",
-        "Gladiator",
-        "Grand Cherokee",
-        "Patriot",
-        "Renegade",
-        "Wrangler",
-      ]
-    },
-    {
-      name: 'Jetour',
-      models: [
-        'X70',
-        'X90'
-      ]
-    },
-    {
-      name: 'Kama',
-      models: [
-        'Karma',
-        'Tuta'
-      ]
-    },
-    {
-      name: 'Kia',
-      models: [
-        "Cadenza",
-        "Carens",
-        "Cerato",
-        "Cerato Koup",
-        "Cerato Koup",
-        "Forte",
-        "Grand Carnival",
-        "K5",
-        "K900",
-        "Mohave",
-        "Opirus",
-        "Optima",
-        "Pegas",
-        "Picanto",
-        "Quoris",
-        "Rio",
-        "Sedona",
-        "Seltos",
-        "Sorento",
-        "Soul",
-        "Sportage",
-        "Stinger",
-        "Telluride",
-      ]
-    },
-    {
-      name: 'Lada',
-      models: [
-        'Niva'
-      ]
-    },
-    {
-      name: 'Lamborghini',
-      models: [
-        "Aventador",
-        "Gallardo",
-        "Huracan",
-        "Urus",
-      ]
-    },
-    {
-      name: 'Land Rover',
-      models: [
-        "Defender",
-        "Discovery",
-        "Discovery Sport",
-        "LR2",
-        "LR3",
-        "LR4",
-      ]
-    },
-    {
-      name: 'Lexus',
-      models: [
-        "CT200h",
-        "CT250",
-        "ES250",
-        "ES300",
-        "ES300h",
-        "ES330",
-        "ES350",
-        "GS200",
-        "GS250",
-        "GS300",
-        "GS350",
-        "GS430",
-        "GS450",
-        "GS450h",
-        "GS460",
-        "GSF",
-        "GX460",
-        "IS-C",
-        "IS-F",
-        "IS200",
-        "IS250",
-        "IS300",
-        "IS350",
-        "LC500",
-        "LFA",
-        "LS350",
-        "LS400",
-        "LS430",
-        "LS460",
-        "LS500",
-        "LS500h",
-        "LS600",
-        "LX470",
-        "LX570",
-        "LX600",
-        "NX200",
-        "NX300",
-        "RC200",
-        "RC350",
-        "RCF",
-        "RX300",
-        "RX350",
-        "RX450h",
-        "SC400",
-        "UX200",
-      ]
-    },
-    {
-      name: 'Lincoln',
-      models: [
-        "Aviator",
-        "Continental",
-        "Corsair",
-        "MKC",
-        "MKS",
-        "MKT",
-        "MKX",
-        "MKZ",
-        "Nautilus",
-        "Navigator",
-      ]
-    },
-    {
-      name: 'Lotus',
-      models: [
-        "Elise",
-        "Evora",
-        "Exige",
-      ]
-    },
-    {
-      name: 'Luxgen',
-      models: [
-        "MPV7",
-        "S5",
-        "U6",
-        "U7",
-      ]
-    },
-    {
-      name: 'Maserati',
-      models: [
-        "Ghibli",
-        "GranCabrio",
-        "Granturismo",
-        "Levante",
-        "Quattroporte",
-      ]
-    },
-    {
-      name: 'Maybach',
-      models: [
-        "57",
-        "S500",
-      ]
-    },
-    {
-      name: 'Mazda',
-      models: [
-        "2",
-        "3",
-        "6",
-        "BT-50",
-        "CX-3",
-        "CX-30",
-        "CX-5",
-        "CX-7",
-        "CX-9",
-        "MX-5",
-      ]
-    },
-    {
-      name: 'McLaren',
-      models: [
-        "570S",
-        "600LT",
-        "650S",
-        "675",
-        "720S",
-        "MP4-12C",
-        "P1",
-      ]
-    },
-    {
-      name: 'Mercedes',
-      models: [
-        "A200",
-        "A220",
-        "A250",
-        "A35 AMG",
-        "A45 AMG",
-        "Actros",
-        "B170",
-        "B200",
-        "C180",
-        "C200",
-        "C220",
-        "C230",
-        "C250",
-        "C280",
-        "C300",
-        "C350",
-        "C400",
-        "C43 AMG",
-        "C450",
-        "C55 AMG",
-        "C63 AMG",
-        "CL500",
-        "CL55 AMG",
-        "CL550",
-        "CL600",
-        "CL63 AMG",
-        "CL65 AMG",
-        "CLA200",
-        "CLA250",
-        "CLA35 AMG",
-        "CLA45 AMG",
-        "CLC160",
-        "CLC180",
-        "CLC200",
-        "CLC220",
-        "CLC250",
-        "CLC350",
-        "CLK200",
-        "CLK280",
-        "CLK320",
-        "CLK350",
-        "CLK500",
-        "CLK55 AMG",
-        "CLS 400",
-        "CLS350",
-        "CLS400",
-        "CLS450",
-        "CLS500",
-        "CLS55 AMG",
-        "CLS550",
-        "CLS63 AMG",
-        "E200",
-        "E220",
-        "E230",
-        "E240",
-        "E250",
-        "E280",
-        "E300",
-        "E320",
-        "E350",
-        "E400",
-        "E43 AMG",
-        "E450",
-        "E500",
-        "E53 AMG",
-        "E55 AMG",
-        "E550",
-        "E63 AMG",
-        "E63 S AMG",
-        "G320",
-        "G350",
-        "G500",
-        "G55 AMG",
-        "G550",
-        "G63 AMG",
-        "G65 AMG",
-        "G700",
-        "G800",
-        "Gazelle",
-        "GL320",
-        "GL450",
-        "GL500",
-        "GL550",
-        "GL63 AMG",
-        "GLA220",
-        "GLA250",
-        "GLA400",
-        "GLA45 AMG",
-        "GLB250",
-        "GLB35 AMG",
-        "GLC200",
-        "GLC250",
-        "GLC300",
-        "GLC43 AMG",
-        "GLC63 AMG",
-        "GLE350",
-        "GLE400",
-        "GLE43 AMG",
-        "GLE450",
-        "GLE500",
-        "GLE53 AMG",
-        "GLE63 AMG",
-        "GLK250",
-        "GLK280",
-        "GLK300",
-        "GLK350",
-        "GLS400",
-        "GLS450",
-        "GLS500",
-        "GLS580",
-        "GLS63 AMG",
-        "GLS700",
-        "AMG GT",
-        "AMG GT-R",
-        "ML250",
-        "ML300",
-        "ML320",
-        "ML350",
-        "ML400",
-        "ML500",
-        "ML550",
-        "ML63 AMG",
-        "R280",
-        "R300",
-        "R350",
-        "R500",
-        "S280",
-        "S300",
-        "S350",
-        "S400",
-        "S450",
-        "S500",
-        "S55 AMG",
-        "S550",
-        "S560",
-        "S600",
-        "S63 AMG",
-        "S65 AMG",
-        "SL350",
-        "SL400",
-        "SL500",
-        "SL55 AMG",
-        "SL550",
-        "SL560",
-        "SL63 AMG",
-        "SL65 AMG",
-        "SLC200",
-        "SLC300",
-        "SLC43 AMG",
-        "SLK200",
-        "SLK230",
-        "SLK250",
-        "SLK280",
-        "SLK300",
-        "SLK320",
-        "SLK350",
-        "SLK530",
-        "SLK55 AMG",
-        "SLK600",
-        "SLR",
-        "SLS AMG",
-        "V",
-        "V250",
-        "Viano",
-        "Vito",
-        "XLP800",
-      ]
-    },
-    {
-      name: 'Mercury',
-      models: [
-        "Grand Marquis",
-        "Mariner",
-        "Milan",
-        "Montego",
-        "Mountaineer",
-      ]
-    },
-    {
-      name: 'MG',
-      models: [
-        "3",
-        "350",
-        "360",
-        "5",
-        "6",
-        "GS",
-        "GT",
-        "HS",
-        "RX5",
-        "RX8",
-        "ZS",
-      ]
-    },
-    {
-      name: 'MINI',
-      models: [
-        "Clubman",
-        "Cooper",
-        "Coupe",
-        "Countryman",
-        "Paceman",
-        "Roadster",
-      ]
-    },
-    {
-      name: 'Mitsubishi',
-      models: [
-        "ASX",
-        "Attrage",
-        "Eclipse",
-        "Eclipse Cross",
-        "Galant",
-        "Grandis",
-        "L200",
-        "L300",
-        "Lancer",
-        "Mirage",
-        "Montero",
-        "Montero Sport",
-        "Outlander",
-        "Pajero",
-        "Pajero Sport",
-        "Space Star",
-        "SWB",
-        "Xpander",
-      ]
-    },
-    {
-      name: 'Morgan',
-      model: [
-        "3 Wheeler",
-        "Aero8",
-        "Plus 4",
-        "Plus 8",
-        "Roadster",
-      ]
-    },
-    {
-      name: 'Nissan',
-      models: [
-        "280 ZX",
-        "350Z",
-        "370z",
-        "Altima",
-        "Armada",
-        "GT-R",
-        "Juke",
-        "Kicks",
-        "Maxima",
-        "Micra",
-        "Murano",
-        "Navara",
-        "Pathfinder",
-        "Patrol",
-        "Patrol Pickup",
-        "Patrol Safari",
-        "Qashqai",
-        "Quest",
-        "Rogue",
-        "Sentra",
-        "Sunny",
-        "Tiida",
-        "Urvan",
-        "Versa",
-        "X-Trail",
-        "Xterra",
-      ]
-    },
-    {
-      name: 'Oldsmobile',
-      models: []
-    },
-    {
-      name: 'Opel',
-      models: [
-        "Adam",
-        "Astra",
-        "Cascada",
-        "Corsa",
-        "Crossland",
-        "Grandland X",
-        "Insignia",
-        "Meriva",
-        "Mokka",
-        "Zafira Tourer",
-      ]
-    },
-    {
-      name: 'Pagani',
-      models: ['Huayra']
-    },
-    {
-      name: 'Panoz',
-      models: []
-    },
-    {
-      name: 'Peugeot',
-      models: [
-        "2008",
-        "206",
-        "207",
-        "208",
-        "3008",
-        "301",
-        "308",
-        "308 CC",
-        "407",
-        "408",
-        "5008",
-        "508",
-        "607",
-        "Boxer",
-        "Partner",
-        "Partner Tepee",
-        "RCZ",
-        "Traveller",
-      ]
-    },
-    {
-      name: 'Polaris',
-      models: ['RZR']
-    },
-    {
-      name: 'Pontiac',
-      models: ['Solstice']
-    },
-    {
-      name: 'Porsche',
-      models: [
-        "911 4S",
-        "911 Carrera",
-        "911 Carrera 4",
-        "911 Carrera 4 GTS",
-        "911 Carrera GTS",
-        "911 Carrera S",
-        "911 GT2",
-        "911 GT3",
-        "911 GTS",
-        "911 S",
-        "911 Speedster",
-        "911 Targa",
-        "911 Targa 4",
-        "911 Targa 4 GTS",
-        "911 Targa 4S",
-        "911 Turbo",
-        "911 Turbo S",
-        "964 Carrera 2",
-        "918 Spyder",
-        "718 Boxster",
-        "718 Boxster GTS",
-        "718 Boxter S",
-        "718 Spyder",
-        "Boxster",
-        "Boxster GT4",
-        "Boxster GTS",
-        "Boxster S",
-        "Cayenne",
-        "Cayenne GTS",
-        "Cayenne S",
-        "Cayenne Turbo",
-        "Cayenne Turbo GT",
-        "Cayenne Turbo S",
-        "718 Cayman",
-        "718 Cayman GTS",
-        "718 Cayman S",
-        "Cayman",
-        "Cayman GT4",
-        "Cayman GTS",
-        "Cayman S",
-        "Macan",
-        "Macan GTS",
-        "Macan S",
-        "Macan Turbo",
-        "Panamera",
-        "Panamera 4",
-        "Panamera 4S",
-        "Panamera GTS",
-        "Panamera S",
-        "Panamera S Turbo",
-        "Panamera Turbo",
-        "Panamera Turbo S",
-        "Taycan",
-      ]
-    },
-    {
-      name: 'RAM',
-      models: [
-        "RAM",
-        "1200",
-        "1500",
-        "2500",
-      ]
-    },
-    {
-      name: 'Range Rover',
-      models: [
-        "Evoque",
-        "Evoque Convertible",
-        "Sport",
-        "Sport Autobiography",
-        "Velar",
-        "Velar R-Dynamic",
-        "Autobiography",
-        "HSE",
-        "Vogue",
-        "Vogue SE",
-      ]
-    },
-    {
-      name: 'Renault',
-      models: [
-        "Captur",
-        "Clio",
-        "Dokker",
-        "Duster",
-        "Fluence",
-        "Koleos",
-        "Laguna",
-        "Logan",
-        "Megane",
-        "Safrane",
-        "Sandero",
-        "Symbol",
-        "Talisman",
-        "Trafic",
-      ]
-    },
-    {
-      name: 'Rolls-Royce',
-      models: [
-        "Cullinan",
-        "Dawn",
-        "Ghost",
-        "Phantom",
-        "Wraith",
-      ]
-    },
-    {
-      name: 'Saab',
-      models: ['9-3']
-    },
-    {
-      name: 'Saturn',
-      models: []
-    },
-    {
-      name: 'Scion',
-      models: ['iM']
-    },
-    {
-      name: 'Seat',
-      models: [
-        "Alhambra",
-        "Altea",
-        "Ibiza",
-        "Leon",
-      ]
-    },
-    {
-      name: 'Shelby',
-      models: [
-        "Mustang",
-        "Cobra",
-      ]
-    },
-    {
-      name: 'Skoda',
-      models: [
-        "Fabia",
-        "Kodiaq",
-        "Octavia",
-        "Rapid",
-        "Scala",
-        "Superb",
-        "Yeti",
-      ]
-    },
-    {
-      name: 'Smart',
-      models: [
-        "Kona",
-        "ForFour",
-        "ForTwo",
-      ]
-    },
-    {
-      name: 'Spyker',
-      models: [
-        "918 Spyder",
-        "718 Spyder",
-      ]
-    },
-    {
-      name: 'SsangYong',
-      models: []
-    },
-    {
-      name: 'Subaru',
-      models: [
-        "BRZ",
-        "Crosstrek",
-        "Forester",
-        "Impreza",
-        "Legacy",
-        "Outback",
-        "WRX",
-        "XV",
-      ]
-    },
-    {
-      name: 'Suzuki',
-      models: [
-        "Alto",
-        "APV",
-        "Baleno",
-        "Celerio",
-        "Ciaz",
-        "Dzire",
-        "Ertiga",
-        "Grand Vitara",
-        "Jimny",
-        "Kizashi",
-        "Swift",
-        "SX4",
-        "Vitara",
-      ]
-    },
-    {
-      name: 'Tata',
-      models: [
-        "Tuta",
-        "Xenon",
-      ]
-    },
-    {
-      name: 'Tesla',
-      models: [
-        "Model 3",
-        "Model S",
-        "Model X",
-        "Model Y",
-        "Roadster",
-      ]
-    },
-    {
-      name: 'Toyota',
-      models: [
-        "4Runner",
-        "86",
-        "Aurion",
-        "Avalon",
-        "Avanza",
-        "C-HR",
-        "Camry",
-        "Celica",
-        "Corolla",
-        "Corolla Cross",
-        "FJ Cruiser",
-        "Fortuner",
-        "Granvia",
-        "Hiace",
-        "Highlander",
-        "Hilux",
-        "Innova",
-        "IQ",
-        "Land Cruiser",
-        "Prado",
-        "Previa",
-        "Prius",
-        "RAV 4",
-        "Rush",
-        "Sequoia",
-        "Sienna",
-        "Supra",
-        "Tacoma",
-        "Tundra",
-        "xA",
-        "Yaris",
-        "Zelas",
-      ]
-    },
-    {
-      name: 'Volkswagen',
-      models: [
-        "Arteon",
-        "Beetle",
-        "Caddy",
-        "Caravelle",
-        "CC",
-        "EOS",
-        "Golf",
-        "ID.4",
-        "Jetta",
-        "Multivan",
-        "Passat",
-        "Polo",
-        "Scirocco",
-        "T-Roc",
-        "Teramont",
-        "Tiguan",
-        "Touareg",
-      ]
-    },
-    {
-      name: 'Volvo',
-      models: [
-        "C30",
-        "C70",
-        "S40",
-        "S60",
-        "S80",
-        "S90",
-        "V40",
-        "V60",
-        "V70",
-        "XC40",
-        "XC60",
-        "XC70",
-        "XC90",
-      ]
-    }
-  ],
-  specs = [
-    'GCC Specs',
-    'non GCC Specs',
-    'I don\'t know'
-  ],
-  cars = [
-    'Abarth',
-    'Alfa Romeo',
-    'Aston Martin',
-    'Audi',
-    'BAIC',
-    'Bentley',
-    'BMW',
-    'Borgward',
-    'Bugatti',
-    'Buick',
-    'BYD',
-    'Cadillac',
-    'Changan',
-    'Chery',
-    'Chevrolet',
-    'Chrysler',
-    'Citroen',
-    'CMC',
-    'Daewoo',
-    'Daihatsu',
-    'Dodge',
-    'Eagle',
-    'FAW-Bestune',
-    'Ferrari',
-    'FIAT',
-    'Fisker',
-    'Ford',
-    'GAC',
-    'Geely',
-    'Genesis',
-    'GMC',
-    'Great Wall',
-    'Haval',
-    'Honda',
-    'Hongqi',
-    'HUMMER',
-    'Hyundai',
-    'Infiniti',
-    'Isuzu',
-    'JAC',
-    'Jaguar',
-    'Jeep',
-    'Jetour',
-    'Kama',
-    'Kia',
-    'Lada',
-    'Lamborghini',
-    'Land Rover',
-    'Lexus',
-    'Lincoln',
-    'Lotus',
-    'Luxgen',
-    'Maserati',
-    'Maybach',
-    'Mazda',
-    'McLaren',
-    'Mercedes',
-    'Mercury',
-    'MG',
-    'MINI',
-    'Mitsubishi',
-    'Morgan',
-    'Nissan',
-    'Oldsmobile',
-    'Opel',
-    'Pagani',
-    'Panoz',
-    'Peugeot',
-    'Polaris',
-    'Pontiac',
-    'Porsche',
-    'RAM',
-    'Range Rover',
-    'Renault',
-    'Rolls-Royce',
-    'Saab',
-    'Saturn',
-    'Scion',
-    'Seat',
-    'Shelby',
-    'Skoda',
-    'Smart',
-    'Spyker',
-    'SsangYong',
-    'Subaru',
-    'Suzuki',
-    'Tata',
-    'Tesla',
-    'Toyota',
-    'Volkswagen',
-    'Volvo',
-  ],
-  progressVal = 0,
-  current_fs, next_fs, previous_fs,
-  left, opacity, scale,
-  animating = false;
+      "Older",
+      "2005",
+      "2006",
+      "2007",
+      "2008",
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+    ],
+    models = [
+      {
+        name: "Abarth",
+        models: ["595"],
+      },
+      {
+        name: "Alfa Romeo",
+        models: ["4C", "Brera", "Giulia", "Giulietta", "MiTo", "Stelvio"],
+      },
+      {
+        name: "Aston Martin",
+        models: [
+          "Cygnet",
+          "DB11",
+          "DB11",
+          "DB9",
+          "DB9",
+          "DBS",
+          "ONE-77",
+          "Rapide",
+          "Vanquish",
+          "V12 Vantage",
+          "V8 Vantage",
+          "Virage",
+        ],
+      },
+      {
+        name: "Audi",
+        models: [
+          "A1",
+          "A3",
+          "RS3",
+          "A4",
+          "S4",
+          "A5",
+          "RS5",
+          "S5",
+          "A6",
+          "A7",
+          "A8",
+          "e-tron",
+          "Q2",
+          "Q3",
+          "Q5",
+          "Q7",
+          "Q8",
+          "R8",
+          "RSQ3",
+          "S3",
+          "RS4",
+          "RS6",
+          "S6",
+          "RS7",
+          "S7",
+          "S8",
+          "SQ5",
+          "RSQ8",
+          "SQ8",
+          "TT",
+          "TT RS",
+          "TTS",
+        ],
+      },
+      {
+        name: "BAIC",
+        models: ["BJ40"],
+      },
+      {
+        name: "Bentley",
+        models: [
+          "Arnage",
+          "Bentayga",
+          "Brooklands",
+          "Continental",
+          "Flying Spur",
+          "Mulsanne",
+        ],
+      },
+      {
+        name: "BMW",
+        models: [
+          "116",
+          "118",
+          "120",
+          "125",
+          "128",
+          "135",
+          "M135",
+          "218",
+          "220",
+          "225",
+          "228",
+          "230",
+          "M235",
+          "M240",
+          "316",
+          "318",
+          "320",
+          "323",
+          "325",
+          "328",
+          "330",
+          "335",
+          "340",
+          "Alpina B3 S",
+          "Alpina D3",
+          "420",
+          "428",
+          "430",
+          "435",
+          "440",
+          "Alpina B4",
+          "Alpina B4 S",
+          "Alpina D4",
+          "520",
+          "523",
+          "525",
+          "528",
+          "530",
+          "535",
+          "540",
+          "545",
+          "550",
+          "Alpina B5",
+          "Alpina D5 S",
+          "630",
+          "635",
+          "640",
+          "645",
+          "650",
+          "Alpina B6",
+          "730",
+          "735",
+          "740",
+          "745",
+          "750",
+          "760",
+          "Alpina B7",
+          "840",
+          "850",
+          "M850",
+          "i8",
+          "M2",
+          "M3",
+          "M4",
+          "M5",
+          "M6",
+          "X1",
+          "X2",
+          "Alpina XD3",
+          "X3",
+          "X4",
+          "X5",
+          "X5 M",
+          "X6",
+          "X6 M",
+          "X7",
+          "Z4",
+        ],
+      },
+      {
+        name: "Borgward",
+        models: ["BX5", "BX7"],
+      },
+      {
+        name: "Bugatti",
+        models: ["Chiron", "Veyron"],
+      },
+      {
+        name: "Buick",
+        models: ["Riviera"],
+      },
+      {
+        name: "BYD",
+        models: [],
+      },
+      {
+        name: "Cadillac",
+        models: [
+          "ATS",
+          "CT4",
+          "CT5",
+          "CT6",
+          "CTS",
+          "DeVille",
+          "Escalade",
+          "SRX",
+          "STS",
+          "XT4",
+          "XT5",
+          "XT6",
+          "XTS",
+        ],
+      },
+      {
+        name: "Changan",
+        models: ["Alsvin", "CS35", "CS75", "CS85", "CS95", "Eado"],
+      },
+      {
+        name: "Chery",
+        models: [
+          "Arrizo3",
+          "Arrizo5",
+          "Arrizo7",
+          "E5",
+          "E8",
+          "Tiggo3",
+          "Tiggo5",
+          "Tiggo7",
+        ],
+      },
+      {
+        name: "Chevrolet",
+        models: [
+          "Avalanche",
+          "Aveo",
+          "Blazer",
+          "Bolt EV",
+          "Camaro",
+          "Caprice",
+          "Captiva",
+          "Corvette",
+          "Cruze",
+          "Epica",
+          "Equinox",
+          "Express",
+          "Impala",
+          "Lumina",
+          "Malibu",
+          "Optra",
+          "Silverado",
+          "Sonic",
+          "Spark",
+          "Suburban",
+          "Tahoe",
+          "Trailblazer",
+          "Traverse",
+          "Trax",
+          "Uplander",
+        ],
+      },
+      {
+        name: "Chrysler",
+        models: [
+          "200",
+          "300C",
+          "300S",
+          "300 SRT",
+          "Grand Voyager",
+          "Pacifica",
+          "PT Cruiser",
+        ],
+      },
+      {
+        name: "Citroen",
+        models: ["C-Elysee", "C3", "C4", "C5"],
+      },
+      {
+        name: "CMC",
+        models: [],
+      },
+      {
+        name: "Daewoo",
+        models: [],
+      },
+      {
+        name: "Daihatsu",
+        models: ["Sirion", "Terios"],
+      },
+      {
+        name: "Dodge",
+        models: [
+          "Avenger",
+          "Caliber",
+          "Caravan",
+          "Challenger",
+          "Charger",
+          "Dart",
+          "Durango",
+          "Journey",
+          "Magnum",
+          "Neon",
+          "Nitro",
+          "RAM",
+          "Viper",
+        ],
+      },
+      {
+        name: "Eagle",
+        models: ["Wrangler"],
+      },
+      {
+        name: "FAW-Bestune",
+        models: [],
+      },
+      {
+        name: "Ferrari",
+        models: [
+          "308 GTS",
+          "360",
+          "458",
+          "488",
+          "550",
+          "612",
+          "812 GTS",
+          "California",
+          "F12",
+          "F430",
+          "F599",
+          "F8 Tributo",
+          "FF",
+          "GTC4Lusso",
+          "LaFerrari",
+          "Portofino",
+          "Roma",
+        ],
+      },
+      {
+        name: "FIAT",
+        models: ["124 Spider", "500", "500C", "500L", "Ducato", "Linea"],
+      },
+      {
+        name: "Fisker",
+        models: ["Karma"],
+      },
+      {
+        name: "Ford",
+        models: [
+          "Bronco",
+          "Crown Victoria",
+          "EcoSport",
+          "Edge",
+          "Escape",
+          "Escort",
+          "Expedition",
+          "Explorer",
+          "F150",
+          "F250",
+          "Fiesta",
+          "Figo",
+          "Five Hundred",
+          "Flex",
+          "Focus",
+          "Fusion",
+          "Model A",
+          "Mondeo",
+          "Mustang",
+          "Ranger",
+          "Taurus",
+          "Transit",
+        ],
+      },
+      {
+        name: "GAC",
+        models: ["GS5", "GS7", "GS8"],
+      },
+      {
+        name: "Geely",
+        models: [
+          "Emgrand 7",
+          "Emgrand 7 (RV)",
+          "Emgrand 8",
+          "Emgrand GT",
+          "Emgrand X7",
+          "GC6",
+          "GS Sport",
+          "GX2",
+        ],
+      },
+      {
+        name: "Genesis",
+        models: ["G70", "G80", "G90", "GV70", "GV80", "Genesis"],
+      },
+      {
+        name: "GMC",
+        models: ["Acadia", "Envoy", "Savanna", "Sierra", "Terrain", "Yukon"],
+      },
+      {
+        name: "Great Wall",
+        models: ["Wingle 5"],
+      },
+      {
+        name: "Haval",
+        models: ["H2", "H6"],
+      },
+      {
+        name: "Honda",
+        models: [
+          "Accord",
+          "Accord Crosstour",
+          "City",
+          "Civic",
+          "CR-V",
+          "HR-V",
+          "Jazz",
+          "MR-V",
+          "Odyssey",
+          "Odyssey J",
+          "Pilot",
+          "S2000",
+        ],
+      },
+      {
+        name: "Hongqi",
+        models: ["HS5"],
+      },
+      {
+        name: "HUMMER",
+        models: ["H1", "H2", "H3"],
+      },
+      {
+        name: "Hyundai",
+        models: [
+          "Accent",
+          "Azera",
+          "Centennial",
+          "Creta",
+          "Elantra",
+          "Equus",
+          "Genesis",
+          "Grand Santa Fe",
+          "Grand Santa Fe",
+          "Grandeur",
+          "H-1",
+          "i10",
+          "i20",
+          "i30",
+          "i40",
+          "Ioniq",
+          "Kona",
+          "Palisade",
+          "Santa Fe",
+          "Sonata",
+          "Trajet",
+          "Tucson",
+          "Veloster",
+          "Venue",
+          "Veracruz",
+        ],
+      },
+      {
+        name: "Infiniti",
+        models: [
+          "EX35",
+          "EX37",
+          "FX35",
+          "FX37",
+          "FX50",
+          "G25",
+          "G35",
+          "G37",
+          "JX35",
+          "M37",
+          "M45",
+          "M50",
+          "M56",
+          "Q30",
+          "Q50",
+          "Q60",
+          "Q70",
+          "QX30",
+          "QX50",
+          "QX56",
+          "QX60",
+          "QX70",
+          "QX80",
+        ],
+      },
+      {
+        name: "Isuzu",
+        models: ["D-Max", 'MU-X"'],
+      },
+      {
+        name: "JAC",
+        models: ["J4", "J5", "S3", "S7"],
+      },
+      {
+        name: "Jaguar",
+        models: [
+          "E-Pace",
+          "E-Type",
+          "F-Pace",
+          "F-Type",
+          "I-Pace",
+          "S-Type",
+          "X-Type",
+          "XE",
+          "XF",
+          "XFR-S",
+          "XJ",
+          "XJ6",
+          "XK",
+          "XKR",
+        ],
+      },
+      {
+        name: "Jeep",
+        models: [
+          "Cherokee",
+          "Commander",
+          "Compass",
+          "Gladiator",
+          "Grand Cherokee",
+          "Patriot",
+          "Renegade",
+          "Wrangler",
+        ],
+      },
+      {
+        name: "Jetour",
+        models: ["X70", "X90"],
+      },
+      {
+        name: "Kama",
+        models: ["Karma", "Tuta"],
+      },
+      {
+        name: "Kia",
+        models: [
+          "Cadenza",
+          "Carens",
+          "Cerato",
+          "Cerato Koup",
+          "Cerato Koup",
+          "Forte",
+          "Grand Carnival",
+          "K5",
+          "K900",
+          "Mohave",
+          "Opirus",
+          "Optima",
+          "Pegas",
+          "Picanto",
+          "Quoris",
+          "Rio",
+          "Sedona",
+          "Seltos",
+          "Sorento",
+          "Soul",
+          "Sportage",
+          "Stinger",
+          "Telluride",
+        ],
+      },
+      {
+        name: "Lada",
+        models: ["Niva"],
+      },
+      {
+        name: "Lamborghini",
+        models: ["Aventador", "Gallardo", "Huracan", "Urus"],
+      },
+      {
+        name: "Land Rover",
+        models: [
+          "Defender",
+          "Discovery",
+          "Discovery Sport",
+          "LR2",
+          "LR3",
+          "LR4",
+        ],
+      },
+      {
+        name: "Lexus",
+        models: [
+          "CT200h",
+          "CT250",
+          "ES250",
+          "ES300",
+          "ES300h",
+          "ES330",
+          "ES350",
+          "GS200",
+          "GS250",
+          "GS300",
+          "GS350",
+          "GS430",
+          "GS450",
+          "GS450h",
+          "GS460",
+          "GSF",
+          "GX460",
+          "IS-C",
+          "IS-F",
+          "IS200",
+          "IS250",
+          "IS300",
+          "IS350",
+          "LC500",
+          "LFA",
+          "LS350",
+          "LS400",
+          "LS430",
+          "LS460",
+          "LS500",
+          "LS500h",
+          "LS600",
+          "LX470",
+          "LX570",
+          "LX600",
+          "NX200",
+          "NX300",
+          "RC200",
+          "RC350",
+          "RCF",
+          "RX300",
+          "RX350",
+          "RX450h",
+          "SC400",
+          "UX200",
+        ],
+      },
+      {
+        name: "Lincoln",
+        models: [
+          "Aviator",
+          "Continental",
+          "Corsair",
+          "MKC",
+          "MKS",
+          "MKT",
+          "MKX",
+          "MKZ",
+          "Nautilus",
+          "Navigator",
+        ],
+      },
+      {
+        name: "Lotus",
+        models: ["Elise", "Evora", "Exige"],
+      },
+      {
+        name: "Luxgen",
+        models: ["MPV7", "S5", "U6", "U7"],
+      },
+      {
+        name: "Maserati",
+        models: [
+          "Ghibli",
+          "GranCabrio",
+          "Granturismo",
+          "Levante",
+          "Quattroporte",
+        ],
+      },
+      {
+        name: "Maybach",
+        models: ["57", "S500"],
+      },
+      {
+        name: "Mazda",
+        models: [
+          "2",
+          "3",
+          "6",
+          "BT-50",
+          "CX-3",
+          "CX-30",
+          "CX-5",
+          "CX-7",
+          "CX-9",
+          "MX-5",
+        ],
+      },
+      {
+        name: "McLaren",
+        models: ["570S", "600LT", "650S", "675", "720S", "MP4-12C", "P1"],
+      },
+      {
+        name: "Mercedes",
+        models: [
+          "A200",
+          "A220",
+          "A250",
+          "A35 AMG",
+          "A45 AMG",
+          "Actros",
+          "B170",
+          "B200",
+          "C180",
+          "C200",
+          "C220",
+          "C230",
+          "C250",
+          "C280",
+          "C300",
+          "C350",
+          "C400",
+          "C43 AMG",
+          "C450",
+          "C55 AMG",
+          "C63 AMG",
+          "CL500",
+          "CL55 AMG",
+          "CL550",
+          "CL600",
+          "CL63 AMG",
+          "CL65 AMG",
+          "CLA200",
+          "CLA250",
+          "CLA35 AMG",
+          "CLA45 AMG",
+          "CLC160",
+          "CLC180",
+          "CLC200",
+          "CLC220",
+          "CLC250",
+          "CLC350",
+          "CLK200",
+          "CLK280",
+          "CLK320",
+          "CLK350",
+          "CLK500",
+          "CLK55 AMG",
+          "CLS 400",
+          "CLS350",
+          "CLS400",
+          "CLS450",
+          "CLS500",
+          "CLS55 AMG",
+          "CLS550",
+          "CLS63 AMG",
+          "E200",
+          "E220",
+          "E230",
+          "E240",
+          "E250",
+          "E280",
+          "E300",
+          "E320",
+          "E350",
+          "E400",
+          "E43 AMG",
+          "E450",
+          "E500",
+          "E53 AMG",
+          "E55 AMG",
+          "E550",
+          "E63 AMG",
+          "E63 S AMG",
+          "G320",
+          "G350",
+          "G500",
+          "G55 AMG",
+          "G550",
+          "G63 AMG",
+          "G65 AMG",
+          "G700",
+          "G800",
+          "Gazelle",
+          "GL320",
+          "GL450",
+          "GL500",
+          "GL550",
+          "GL63 AMG",
+          "GLA220",
+          "GLA250",
+          "GLA400",
+          "GLA45 AMG",
+          "GLB250",
+          "GLB35 AMG",
+          "GLC200",
+          "GLC250",
+          "GLC300",
+          "GLC43 AMG",
+          "GLC63 AMG",
+          "GLE350",
+          "GLE400",
+          "GLE43 AMG",
+          "GLE450",
+          "GLE500",
+          "GLE53 AMG",
+          "GLE63 AMG",
+          "GLK250",
+          "GLK280",
+          "GLK300",
+          "GLK350",
+          "GLS400",
+          "GLS450",
+          "GLS500",
+          "GLS580",
+          "GLS63 AMG",
+          "GLS700",
+          "AMG GT",
+          "AMG GT-R",
+          "ML250",
+          "ML300",
+          "ML320",
+          "ML350",
+          "ML400",
+          "ML500",
+          "ML550",
+          "ML63 AMG",
+          "R280",
+          "R300",
+          "R350",
+          "R500",
+          "S280",
+          "S300",
+          "S350",
+          "S400",
+          "S450",
+          "S500",
+          "S55 AMG",
+          "S550",
+          "S560",
+          "S600",
+          "S63 AMG",
+          "S65 AMG",
+          "SL350",
+          "SL400",
+          "SL500",
+          "SL55 AMG",
+          "SL550",
+          "SL560",
+          "SL63 AMG",
+          "SL65 AMG",
+          "SLC200",
+          "SLC300",
+          "SLC43 AMG",
+          "SLK200",
+          "SLK230",
+          "SLK250",
+          "SLK280",
+          "SLK300",
+          "SLK320",
+          "SLK350",
+          "SLK530",
+          "SLK55 AMG",
+          "SLK600",
+          "SLR",
+          "SLS AMG",
+          "V",
+          "V250",
+          "Viano",
+          "Vito",
+          "XLP800",
+        ],
+      },
+      {
+        name: "Mercury",
+        models: ["Grand Marquis", "Mariner", "Milan", "Montego", "Mountaineer"],
+      },
+      {
+        name: "MG",
+        models: [
+          "3",
+          "350",
+          "360",
+          "5",
+          "6",
+          "GS",
+          "GT",
+          "HS",
+          "RX5",
+          "RX8",
+          "ZS",
+        ],
+      },
+      {
+        name: "MINI",
+        models: [
+          "Clubman",
+          "Cooper",
+          "Coupe",
+          "Countryman",
+          "Paceman",
+          "Roadster",
+        ],
+      },
+      {
+        name: "Mitsubishi",
+        models: [
+          "ASX",
+          "Attrage",
+          "Eclipse",
+          "Eclipse Cross",
+          "Galant",
+          "Grandis",
+          "L200",
+          "L300",
+          "Lancer",
+          "Mirage",
+          "Montero",
+          "Montero Sport",
+          "Outlander",
+          "Pajero",
+          "Pajero Sport",
+          "Space Star",
+          "SWB",
+          "Xpander",
+        ],
+      },
+      {
+        name: "Morgan",
+        model: ["3 Wheeler", "Aero8", "Plus 4", "Plus 8", "Roadster"],
+      },
+      {
+        name: "Nissan",
+        models: [
+          "280 ZX",
+          "350Z",
+          "370z",
+          "Altima",
+          "Armada",
+          "GT-R",
+          "Juke",
+          "Kicks",
+          "Maxima",
+          "Micra",
+          "Murano",
+          "Navara",
+          "Pathfinder",
+          "Patrol",
+          "Patrol Pickup",
+          "Patrol Safari",
+          "Qashqai",
+          "Quest",
+          "Rogue",
+          "Sentra",
+          "Sunny",
+          "Tiida",
+          "Urvan",
+          "Versa",
+          "X-Trail",
+          "Xterra",
+        ],
+      },
+      {
+        name: "Oldsmobile",
+        models: [],
+      },
+      {
+        name: "Opel",
+        models: [
+          "Adam",
+          "Astra",
+          "Cascada",
+          "Corsa",
+          "Crossland",
+          "Grandland X",
+          "Insignia",
+          "Meriva",
+          "Mokka",
+          "Zafira Tourer",
+        ],
+      },
+      {
+        name: "Pagani",
+        models: ["Huayra"],
+      },
+      {
+        name: "Panoz",
+        models: [],
+      },
+      {
+        name: "Peugeot",
+        models: [
+          "2008",
+          "206",
+          "207",
+          "208",
+          "3008",
+          "301",
+          "308",
+          "308 CC",
+          "407",
+          "408",
+          "5008",
+          "508",
+          "607",
+          "Boxer",
+          "Partner",
+          "Partner Tepee",
+          "RCZ",
+          "Traveller",
+        ],
+      },
+      {
+        name: "Polaris",
+        models: ["RZR"],
+      },
+      {
+        name: "Pontiac",
+        models: ["Solstice"],
+      },
+      {
+        name: "Porsche",
+        models: [
+          "911 4S",
+          "911 Carrera",
+          "911 Carrera 4",
+          "911 Carrera 4 GTS",
+          "911 Carrera GTS",
+          "911 Carrera S",
+          "911 GT2",
+          "911 GT3",
+          "911 GTS",
+          "911 S",
+          "911 Speedster",
+          "911 Targa",
+          "911 Targa 4",
+          "911 Targa 4 GTS",
+          "911 Targa 4S",
+          "911 Turbo",
+          "911 Turbo S",
+          "964 Carrera 2",
+          "918 Spyder",
+          "718 Boxster",
+          "718 Boxster GTS",
+          "718 Boxter S",
+          "718 Spyder",
+          "Boxster",
+          "Boxster GT4",
+          "Boxster GTS",
+          "Boxster S",
+          "Cayenne",
+          "Cayenne GTS",
+          "Cayenne S",
+          "Cayenne Turbo",
+          "Cayenne Turbo GT",
+          "Cayenne Turbo S",
+          "718 Cayman",
+          "718 Cayman GTS",
+          "718 Cayman S",
+          "Cayman",
+          "Cayman GT4",
+          "Cayman GTS",
+          "Cayman S",
+          "Macan",
+          "Macan GTS",
+          "Macan S",
+          "Macan Turbo",
+          "Panamera",
+          "Panamera 4",
+          "Panamera 4S",
+          "Panamera GTS",
+          "Panamera S",
+          "Panamera S Turbo",
+          "Panamera Turbo",
+          "Panamera Turbo S",
+          "Taycan",
+        ],
+      },
+      {
+        name: "RAM",
+        models: ["RAM", "1200", "1500", "2500"],
+      },
+      {
+        name: "Range Rover",
+        models: [
+          "Evoque",
+          "Evoque Convertible",
+          "Sport",
+          "Sport Autobiography",
+          "Velar",
+          "Velar R-Dynamic",
+          "Autobiography",
+          "HSE",
+          "Vogue",
+          "Vogue SE",
+        ],
+      },
+      {
+        name: "Renault",
+        models: [
+          "Captur",
+          "Clio",
+          "Dokker",
+          "Duster",
+          "Fluence",
+          "Koleos",
+          "Laguna",
+          "Logan",
+          "Megane",
+          "Safrane",
+          "Sandero",
+          "Symbol",
+          "Talisman",
+          "Trafic",
+        ],
+      },
+      {
+        name: "Rolls-Royce",
+        models: ["Cullinan", "Dawn", "Ghost", "Phantom", "Wraith"],
+      },
+      {
+        name: "Saab",
+        models: ["9-3"],
+      },
+      {
+        name: "Saturn",
+        models: [],
+      },
+      {
+        name: "Scion",
+        models: ["iM"],
+      },
+      {
+        name: "Seat",
+        models: ["Alhambra", "Altea", "Ibiza", "Leon"],
+      },
+      {
+        name: "Shelby",
+        models: ["Mustang", "Cobra"],
+      },
+      {
+        name: "Skoda",
+        models: [
+          "Fabia",
+          "Kodiaq",
+          "Octavia",
+          "Rapid",
+          "Scala",
+          "Superb",
+          "Yeti",
+        ],
+      },
+      {
+        name: "Smart",
+        models: ["Kona", "ForFour", "ForTwo"],
+      },
+      {
+        name: "Spyker",
+        models: ["918 Spyder", "718 Spyder"],
+      },
+      {
+        name: "SsangYong",
+        models: [],
+      },
+      {
+        name: "Subaru",
+        models: [
+          "BRZ",
+          "Crosstrek",
+          "Forester",
+          "Impreza",
+          "Legacy",
+          "Outback",
+          "WRX",
+          "XV",
+        ],
+      },
+      {
+        name: "Suzuki",
+        models: [
+          "Alto",
+          "APV",
+          "Baleno",
+          "Celerio",
+          "Ciaz",
+          "Dzire",
+          "Ertiga",
+          "Grand Vitara",
+          "Jimny",
+          "Kizashi",
+          "Swift",
+          "SX4",
+          "Vitara",
+        ],
+      },
+      {
+        name: "Tata",
+        models: ["Tuta", "Xenon"],
+      },
+      {
+        name: "Tesla",
+        models: ["Model 3", "Model S", "Model X", "Model Y", "Roadster"],
+      },
+      {
+        name: "Toyota",
+        models: [
+          "4Runner",
+          "86",
+          "Aurion",
+          "Avalon",
+          "Avanza",
+          "C-HR",
+          "Camry",
+          "Celica",
+          "Corolla",
+          "Corolla Cross",
+          "FJ Cruiser",
+          "Fortuner",
+          "Granvia",
+          "Hiace",
+          "Highlander",
+          "Hilux",
+          "Innova",
+          "IQ",
+          "Land Cruiser",
+          "Prado",
+          "Previa",
+          "Prius",
+          "RAV 4",
+          "Rush",
+          "Sequoia",
+          "Sienna",
+          "Supra",
+          "Tacoma",
+          "Tundra",
+          "xA",
+          "Yaris",
+          "Zelas",
+        ],
+      },
+      {
+        name: "Volkswagen",
+        models: [
+          "Arteon",
+          "Beetle",
+          "Caddy",
+          "Caravelle",
+          "CC",
+          "EOS",
+          "Golf",
+          "ID.4",
+          "Jetta",
+          "Multivan",
+          "Passat",
+          "Polo",
+          "Scirocco",
+          "T-Roc",
+          "Teramont",
+          "Tiguan",
+          "Touareg",
+        ],
+      },
+      {
+        name: "Volvo",
+        models: [
+          "C30",
+          "C70",
+          "S40",
+          "S60",
+          "S80",
+          "S90",
+          "V40",
+          "V60",
+          "V70",
+          "XC40",
+          "XC60",
+          "XC70",
+          "XC90",
+        ],
+      },
+    ],
+    specs = ["GCC Specs", "non GCC Specs", "I don't know"],
+    cars = [
+      "Abarth",
+      "Alfa Romeo",
+      "Aston Martin",
+      "Audi",
+      "BAIC",
+      "Bentley",
+      "BMW",
+      "Borgward",
+      "Bugatti",
+      "Buick",
+      "BYD",
+      "Cadillac",
+      "Changan",
+      "Chery",
+      "Chevrolet",
+      "Chrysler",
+      "Citroen",
+      "CMC",
+      "Daewoo",
+      "Daihatsu",
+      "Dodge",
+      "Eagle",
+      "FAW-Bestune",
+      "Ferrari",
+      "FIAT",
+      "Fisker",
+      "Ford",
+      "GAC",
+      "Geely",
+      "Genesis",
+      "GMC",
+      "Great Wall",
+      "Haval",
+      "Honda",
+      "Hongqi",
+      "HUMMER",
+      "Hyundai",
+      "Infiniti",
+      "Isuzu",
+      "JAC",
+      "Jaguar",
+      "Jeep",
+      "Jetour",
+      "Kama",
+      "Kia",
+      "Lada",
+      "Lamborghini",
+      "Land Rover",
+      "Lexus",
+      "Lincoln",
+      "Lotus",
+      "Luxgen",
+      "Maserati",
+      "Maybach",
+      "Mazda",
+      "McLaren",
+      "Mercedes",
+      "Mercury",
+      "MG",
+      "MINI",
+      "Mitsubishi",
+      "Morgan",
+      "Nissan",
+      "Oldsmobile",
+      "Opel",
+      "Pagani",
+      "Panoz",
+      "Peugeot",
+      "Polaris",
+      "Pontiac",
+      "Porsche",
+      "RAM",
+      "Range Rover",
+      "Renault",
+      "Rolls-Royce",
+      "Saab",
+      "Saturn",
+      "Scion",
+      "Seat",
+      "Shelby",
+      "Skoda",
+      "Smart",
+      "Spyker",
+      "SsangYong",
+      "Subaru",
+      "Suzuki",
+      "Tata",
+      "Tesla",
+      "Toyota",
+      "Volkswagen",
+      "Volvo",
+    ],
+    progressVal = 0,
+    current_fs,
+    next_fs,
+    previous_fs,
+    left,
+    opacity,
+    scale,
+    animating = false;
   $("#carxchange").html(`
     <div class="container">
     <div class="tab-content">
@@ -1539,7 +1387,9 @@ $( document ).ready(function() {
         </div>
       </div>
       <form novalidate onsubmit="return false" class="w-100">
-        <input type="hidden" id="gclid_field" name="gclid_field" value="">
+        <input type="hidden" name="gclid_field" id="gclid_field" value="">
+        <input type="hidden" name="fbclid_field" id="fbclid_field" value="">
+        <input type="hidden" name="userid_field" id="userid_field" value="">
         <div class="slide-wrapper w-100">
           <div class="slide slide-first active" id="slide-make">
             <div class="slide-header">
@@ -2380,7 +2230,7 @@ $( document ).ready(function() {
     </div>
   </div>`);
   // fill years
-  years.forEach(year => {
+  years.forEach((year) => {
     $("#car-years-list").prepend(`
       <div class="label-wrapper">
       <input type="radio" name="year" value="${year}" id="${year}">
@@ -2391,7 +2241,7 @@ $( document ).ready(function() {
   });
 
   // fill specs
-  specs.forEach(spec => {
+  specs.forEach((spec) => {
     $("#car-specs-list").append(`
       <div class="label-wrapper">
       <input type="radio" name="specs" value="${spec}" id="${spec}" class="input-specs">
@@ -2402,16 +2252,16 @@ $( document ).ready(function() {
   });
 
   const params = new URLSearchParams(window.location.search);
-  if(params.has('car')) {
+  if (params.has("car")) {
     setTimeout(() => {
-      document.getElementById(params.get('car')).click();
+      document.getElementById(params.get("car")).click();
     }, 10);
   }
-  
+
   const nextSlide = () => {
     if (animating) return false;
     animating = true;
-    current_fs = $('.slide.active');
+    current_fs = $(".slide.active");
     progressVal += 4.54545455;
     next_fs = current_fs.next();
     current_fs.removeClass("active");
@@ -2420,9 +2270,12 @@ $( document ).ready(function() {
       //show the next fieldset
       next_fs.css("display", "flex");
       $(".progress-info").attr("data-val", Math.round(progressVal));
-      $(".progress-bar").animate({
-        width: `${progressVal}%`
-      }, 200);
+      $(".progress-bar").animate(
+        {
+          width: `${progressVal}%`,
+        },
+        200
+      );
       //hide the current fieldset with style
       current_fs.animate(
         { opacity: 0 },
@@ -2445,7 +2298,7 @@ $( document ).ready(function() {
           complete: function () {
             current_fs.hide();
             animating = false;
-            if(next_fs.index() > 0) {
+            if (next_fs.index() > 0) {
               $("#btn-back").css("visibility", "visible");
             }
           },
@@ -2454,40 +2307,51 @@ $( document ).ready(function() {
         }
       );
     }, 300);
-  }
+  };
 
   //fill dropdown data
   const fillingDropdown = (dropdown, list) => {
-    dropdown.html('');
-    list.forEach(item => {
-      dropdown.append(`<li>${item}</li>`)
-    })
-    if(dropdown.children[0] === undefined) {
+    dropdown.html("");
+    list.forEach((item) => {
+      dropdown.append(`<li>${item}</li>`);
+    });
+    if (dropdown.children[0] === undefined) {
       $(".carxchange").removeClass("search-opened");
-      return dropdown.removeClass("opened")
+      return dropdown.removeClass("opened");
     }
     $(".carxchange").addClass("search-opened");
-    dropdown.addClass("opened")
-  }
+    dropdown.addClass("opened");
+  };
 
   // use fillingDropdown for first time
   fillingDropdown($("#search-car-dropdown"), cars);
 
   // add value to input onclick on li in dropdown
-  $("body").on("click", ".makes-drop-down li", function(e) {
+  $("body").on("click", ".makes-drop-down li", function (e) {
     e.stopPropagation();
-    $(this).parent().parent().find('input').val($(this).html());
-    $(this).parent().removeClass("opened")
+    $(this).parent().parent().find("input").val($(this).html());
+    $(this).parent().removeClass("opened");
     $(".carxchange").removeClass("search-opened");
-    if($(this).parent().is($("#search-car-dropdown"))) {
-      if($(`#cars-list input[type='radio'][value='${$(this).html()}']`).length > 0 ) {
-        $(`#cars-list input[type='radio'][value='${$(this).html()}']`).prop("checked", true);
+    if ($(this).parent().is($("#search-car-dropdown"))) {
+      if (
+        $(`#cars-list input[type='radio'][value='${$(this).html()}']`).length >
+        0
+      ) {
+        $(`#cars-list input[type='radio'][value='${$(this).html()}']`).prop(
+          "checked",
+          true
+        );
       } else {
         $("#other-car").prop("checked", true);
       }
     } else {
-      if($(`#car-models-list input[type='radio'][value='${$(this).html()}']`).length > 0 ) {
-        $(`#car-models-list input[type='radio'][value='${$(this).html()}']`).prop("checked", true);
+      if (
+        $(`#car-models-list input[type='radio'][value='${$(this).html()}']`)
+          .length > 0
+      ) {
+        $(
+          `#car-models-list input[type='radio'][value='${$(this).html()}']`
+        ).prop("checked", true);
       } else {
         $("#other-model").prop("checked", true);
       }
@@ -2495,62 +2359,71 @@ $( document ).ready(function() {
   });
 
   // empty the search when check input
-  $('body').on("click", "#cars-list input[type='radio']", function() {
-    $("#search-car").val('');
+  $("body").on("click", "#cars-list input[type='radio']", function () {
+    $("#search-car").val("");
     $(".makes-drop-down li").show();
   });
-  $('body').on("click", "#car-models-list input[type='radio']", function() {
-    $("#search-model").val('');
+  $("body").on("click", "#car-models-list input[type='radio']", function () {
+    $("#search-model").val("");
     $(".makes-drop-down li").show();
-  })
+  });
 
   // open dropdown on click
-  $("#search-car, #search-model").on("click", function(e) {
+  $("#search-car, #search-model").on("click", function (e) {
     e.stopPropagation();
-    $(this).siblings(".makes-drop-down").addClass("opened")
+    $(this).siblings(".makes-drop-down").addClass("opened");
     $(".carxchange").addClass("search-opened");
   });
-  
-  $("#search-car, #search-model").on("keyup", function() {
+
+  $("#search-car, #search-model").on("keyup", function () {
     const userInput = $(this).val().toLowerCase();
-    $(this).parent().find(".makes-drop-down li").each(function() {
-      $(this).hide();
-      if($(this).html().toLowerCase().includes(userInput)) {
-        $(this).show();
-      }
-    });
+    $(this)
+      .parent()
+      .find(".makes-drop-down li")
+      .each(function () {
+        $(this).hide();
+        if ($(this).html().toLowerCase().includes(userInput)) {
+          $(this).show();
+        }
+      });
   });
 
   // close dropdown on click on any space
-  $(window).on("click", function(){
+  $(window).on("click", function () {
     $(".makes-drop-down").removeClass("opened");
     $(".carxchange").removeClass("search-opened");
   });
 
   // open dropdown when click on other car
-  $("body").on("click", "#other-car", function(e) {
+  $("body").on("click", "#other-car", function (e) {
     e.stopPropagation();
     $("#search-car-dropdown").addClass("opened");
     $(".carxchange").addClass("search-opened");
   });
 
   // open dropdown when click on other model
-  $("body").on("click", "#other-model", function(e) {
+  $("body").on("click", "#other-model", function (e) {
     e.stopPropagation();
     $("#search-model-dropdown").addClass("opened");
     $(".carxchange").addClass("search-opened");
   });
 
-  $("#exact-price").on("change", function() {
-    document.getElementById("range-price").innerHTML = "AED +" + numberWithCommas($(this).val()); 
+  $("#exact-price").on("change", function () {
+    document.getElementById("range-price").innerHTML =
+      "AED +" + numberWithCommas($(this).val());
   });
 
-  $("body").on("click", ".slide input[type='radio']", function(e) {
-    if($(this).hasClass("other-car") || $(this).hasClass("other-model") || $(this).hasClass("car-type") || $(this).hasClass("contact-type")) {
+  $("body").on("click", ".slide input[type='radio']", function (e) {
+    if (
+      $(this).hasClass("other-car") ||
+      $(this).hasClass("other-model") ||
+      $(this).hasClass("car-type") ||
+      $(this).hasClass("contact-type")
+    ) {
       return;
     }
     nextSlide();
-    if($(this).hasClass("calc-price")) {
+    if ($(this).hasClass("calc-price")) {
       document.querySelector("lottie-player").stop();
       document.querySelector("lottie-player").play();
       setTimeout(() => {
@@ -2558,31 +2431,35 @@ $( document ).ready(function() {
       }, 4000);
     }
   });
-  $("body").on("click", ".search-field ul li", function(e) {
+  $("body").on("click", ".search-field ul li", function (e) {
     nextSlide();
   });
-  $("body").on("click", "#continue-button, .btn-continue", function(e) {
+  $("body").on("click", "#continue-button, .btn-continue", function (e) {
     nextSlide();
   });
 
-  $("body").on("click", "#slide-make input[type='radio']:not(.other-car)", function(e) {
-    let val = $(this).val();
-    fillModels(val);
-  });
+  $("body").on(
+    "click",
+    "#slide-make input[type='radio']:not(.other-car)",
+    function (e) {
+      let val = $(this).val();
+      fillModels(val);
+    }
+  );
 
-  $("body").on("click", "#slide-make .search-field li", function(e) {
+  $("body").on("click", "#slide-make .search-field li", function (e) {
     let val = $(this).html();
     fillModels(val);
   });
 
   // fill models function
   const fillModels = (car) => {
-    const foundModels = models.find(element => element.name == car);
+    const foundModels = models.find((element) => element.name == car);
     fillingDropdown($("#search-model-dropdown"), foundModels.models);
-    $("#car-models-list").html('');
+    $("#car-models-list").html("");
     for (let index = 0; index < foundModels.models.length; index++) {
       const model = foundModels.models[index];
-      if(foundModels.models.length > 9 && (index == 9)) {
+      if (foundModels.models.length > 9 && index == 9) {
         $("#car-models-list").append(`
           <div class="label-wrapper">
             <input type="radio" name="model" value="other-model" id="other-model" class="other-model">
@@ -2603,26 +2480,29 @@ $( document ).ready(function() {
         `);
       }
     }
-  }
+  };
 
   $("#btn-back").click(function () {
     if (animating) return false;
     animating = true;
-  
-    current_fs = $('.slide.active');
-    previous_fs = $('.slide.active').prev();
-  
+
+    current_fs = $(".slide.active");
+    previous_fs = $(".slide.active").prev();
+
     //de-activate current slide on progressbar
-  
+
     //show the previous fieldset
     previous_fs.css("display", "flex");
     current_fs.removeClass("active");
     previous_fs.addClass("active").show();
     progressVal -= 4.54545455;
     $(".progress-info").attr("data-val", Math.round(progressVal));
-    $(".progress-bar").animate({
-      width: `${progressVal}%`
-    }, 200);
+    $(".progress-bar").animate(
+      {
+        width: `${progressVal}%`,
+      },
+      200
+    );
     //hide the current fieldset with style
     current_fs.animate(
       { opacity: 0 },
@@ -2646,7 +2526,7 @@ $( document ).ready(function() {
           current_fs.hide();
           animating = false;
           previous_fs.css({ position: "relative" });
-          if(previous_fs.index() > 0) {
+          if (previous_fs.index() > 0) {
             $("#btn-back").css("visibility", "visible");
           } else {
             $("#btn-back").css("visibility", "hidden");
@@ -2688,11 +2568,16 @@ $( document ).ready(function() {
    */
 
   const validateFormContact = () => {
-    if($("#phoneNumber").val().length >= 9 && $("#seller_first_name").val().length > 0 && $("#seller_last_name").val().length > 0 && validateEmail($("#seller_email").val())) {
+    if (
+      $("#phoneNumber").val().length >= 9 &&
+      $("#seller_first_name").val().length > 0 &&
+      $("#seller_last_name").val().length > 0 &&
+      validateEmail($("#seller_email").val())
+    ) {
       return true;
     }
     return false;
-  }
+  };
   const validateEmail = (email) => {
     return email.match(
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -2702,59 +2587,80 @@ $( document ).ready(function() {
 
   // First let's set the colors of our sliders
   const settings = {
-    fill: '#0076CE',
-    background: '#eeeff4'
-  }
+    fill: "#0076CE",
+    background: "#eeeff4",
+  };
 
   // First find all our sliders
-  const sliders = document.querySelectorAll('.range-slider');
+  const sliders = document.querySelectorAll(".range-slider");
 
   // Iterate through that list of sliders
   // ... this call goes through our array of sliders [slider1,slider2,slider3] and inserts them one-by-one into the code block below with the variable name (slider). We can then access each of wthem by calling slider
-  Array.prototype.forEach.call(sliders,(slider)=>{
+  Array.prototype.forEach.call(sliders, (slider) => {
     // Look inside our slider for our input add an event listener
-  //   ... the input inside addEventListener() is looking for the input action, we could change it to something like change
-    slider.querySelector('input').addEventListener('input', (event)=>{
+    //   ... the input inside addEventListener() is looking for the input action, we could change it to something like change
+    slider.querySelector("input").addEventListener("input", (event) => {
       // 1. apply our value to the span
-      if(slider.getAttribute("data-id") == "range-price") {
-        document.getElementById(slider.getAttribute("data-id")).innerHTML = "AED " + numberWithCommas(event.target.value);
-        if(event.target.value == slider.querySelector("input").getAttribute("max")) {
+      if (slider.getAttribute("data-id") == "range-price") {
+        document.getElementById(slider.getAttribute("data-id")).innerHTML =
+          "AED " + numberWithCommas(event.target.value);
+        if (
+          event.target.value ==
+          slider.querySelector("input").getAttribute("max")
+        ) {
           document.getElementById("range-full-alert").style.display = "block";
-          document.getElementById("range-full-alert").querySelector("input").value = event.target.value;
+          document
+            .getElementById("range-full-alert")
+            .querySelector("input").value = event.target.value;
         } else {
           document.getElementById("range-full-alert").style.display = "none";
         }
       } else {
-        document.getElementById(slider.getAttribute("data-id")).innerHTML =  numberWithCommas(event.target.value) + " Kilometers";
+        document.getElementById(slider.getAttribute("data-id")).innerHTML =
+          numberWithCommas(event.target.value) + " Kilometers";
       }
       // 2. apply our fill to the input
       applyFill(event.target);
     });
     // Don't wait for the listener, apply it now!
-    applyFill(slider.querySelector('input'));
+    applyFill(slider.querySelector("input"));
   });
 
   // This function applies the fill to our sliders by using a linear gradient background
   function applyFill(slider) {
     // Let's turn our value into a percentage to figure out how far it is in between the min and max of our input
-    const percentage = 100*(slider.value-slider.min)/(slider.max-slider.min);
+    const percentage =
+      (100 * (slider.value - slider.min)) / (slider.max - slider.min);
     // now we'll create a linear gradient that separates at the above point
     // Our background color will change here
-    const bg = `linear-gradient(90deg, ${settings.fill} ${percentage}%, ${settings.background} ${percentage+0.1}%)`;
+    const bg = `linear-gradient(90deg, ${settings.fill} ${percentage}%, ${
+      settings.background
+    } ${percentage + 0.1}%)`;
     slider.style.background = bg;
   }
-  $("#send-price").on("click", function() {
-    $(this).parents('.needs-validation').addClass("was-validated");
-    if(validateFormContact()) {
+  $("#send-price").on("click", function () {
+    $(this).parents(".needs-validation").addClass("was-validated");
+    if (validateFormContact()) {
       let $this = $(this),
-          checked = [];
-      $("#slide-features .checkbox-wrapper input[type='checkbox']:checked").each(function(){
+        checked = [];
+      $(
+        "#slide-features .checkbox-wrapper input[type='checkbox']:checked"
+      ).each(function () {
         checked.push($(this).val());
       });
-      $this.html("Submitting...").prop("disabled", true)
+      $this.html("Submitting...").prop("disabled", true);
       let data = {
-        make: ($("#cars-list input[type='radio']:checked").val() !== 'other-car' && $("#cars-list input[type='radio']:checked").val() !== undefined) ? $("#cars-list input[type='radio']:checked").val() : $("#search-car").val(),
-        model: ($("#car-models-list input[type='radio']:checked").val() !== 'other-model' && $("#car-models-list input[type='radio']:checked").val() !== undefined) ? $("#car-models-list input[type='radio']:checked").val() : $("#search-model").val(),
+        make:
+          $("#cars-list input[type='radio']:checked").val() !== "other-car" &&
+          $("#cars-list input[type='radio']:checked").val() !== undefined
+            ? $("#cars-list input[type='radio']:checked").val()
+            : $("#search-car").val(),
+        model:
+          $("#car-models-list input[type='radio']:checked").val() !==
+            "other-model" &&
+          $("#car-models-list input[type='radio']:checked").val() !== undefined
+            ? $("#car-models-list input[type='radio']:checked").val()
+            : $("#search-model").val(),
         year: $("#car-years-list input[type='radio']:checked").val(),
         specifications: $("#car-specs-list input[type='radio']:checked").val(),
         mileage: $("[data-id='range-miles'] input").val(),
@@ -2763,34 +2669,64 @@ $( document ).ready(function() {
         first_name: $("#seller_first_name").val(),
         last_name: $("#seller_last_name").val(),
         email: $("#seller_email").val(),
-        phone: '+971' + $("#phoneNumber").val(),
-        'Select any features that your car has': checked,
-        'Anything else you’d like to mention' : $("textarea").val(),
-        'How much service history does your car have?': $("input[type='radio'][name='service']:checked").val(),
-        'Where\'s your service history from?': $("input[type='radio'][name='service-history']:checked").val(),
-        'When was your car last serviced?': $("input[type='radio'][name='service-time']:checked").val(),
-        'Any driving or mechanical faults on your car?': $("input[type='radio'][name='faults']:checked").val(),
-        'Any warning lights displayed on your car?': $("input[type='radio'][name='warnings']:checked").val(),
-        'Any damage to the windscreen?': $("input[type='radio'][name='windscreen']:checked").val(),
-        'How many alloys have scuffs, kerbing or damage?': $("input[type='radio'][name='alloys']:checked").val(),
-        'How many tyres are worn, punctured or in need of replacement?': $("input[type='radio'][name='tyres']:checked").val(),
-        'Any damage to your bumper or bonnet?': $("input[type='radio'][name='bumper']:checked").val(),
-        'Any damage to the passenger side?': $("input[type='radio'][name='passenger']:checked").val(),
-        'Any damage to the boot or rear bumper?': $("input[type='radio'][name='rear-bumper']:checked").val(),
-        'Any damage to the driver side?': $("input[type='radio'][name='driver']:checked").val(),
-        'Any damage to the seats or car interior?': $("input[type='radio'][name='seats-damage']:checked").val(),
-        'Any damage to the roof?': $("input[type='radio'][name='roof-damage']:checked").val(),
+        phone: "+971" + $("#phoneNumber").val(),
+        "Select any features that your car has": checked,
+        "Anything else you’d like to mention": $("textarea").val(),
+        "How much service history does your car have?": $(
+          "input[type='radio'][name='service']:checked"
+        ).val(),
+        "Where's your service history from?": $(
+          "input[type='radio'][name='service-history']:checked"
+        ).val(),
+        "When was your car last serviced?": $(
+          "input[type='radio'][name='service-time']:checked"
+        ).val(),
+        "Any driving or mechanical faults on your car?": $(
+          "input[type='radio'][name='faults']:checked"
+        ).val(),
+        "Any warning lights displayed on your car?": $(
+          "input[type='radio'][name='warnings']:checked"
+        ).val(),
+        "Any damage to the windscreen?": $(
+          "input[type='radio'][name='windscreen']:checked"
+        ).val(),
+        "How many alloys have scuffs, kerbing or damage?": $(
+          "input[type='radio'][name='alloys']:checked"
+        ).val(),
+        "How many tyres are worn, punctured or in need of replacement?": $(
+          "input[type='radio'][name='tyres']:checked"
+        ).val(),
+        "Any damage to your bumper or bonnet?": $(
+          "input[type='radio'][name='bumper']:checked"
+        ).val(),
+        "Any damage to the passenger side?": $(
+          "input[type='radio'][name='passenger']:checked"
+        ).val(),
+        "Any damage to the boot or rear bumper?": $(
+          "input[type='radio'][name='rear-bumper']:checked"
+        ).val(),
+        "Any damage to the driver side?": $(
+          "input[type='radio'][name='driver']:checked"
+        ).val(),
+        "Any damage to the seats or car interior?": $(
+          "input[type='radio'][name='seats-damage']:checked"
+        ).val(),
+        "Any damage to the roof?": $(
+          "input[type='radio'][name='roof-damage']:checked"
+        ).val(),
         Gclid: $("#gclid_field").val(),
+        Fbclid: $("#fbclid_field").val(),
+        Userid: $("#userid_field").val(),
       };
       let request = $.ajax({
         url: "https://hook.us1.make.com/4gmefdbgrwmzxcyt2n988acf2i1gx3w6",
         type: "post",
-        data: data
+        data: data,
       });
       document.getElementById("thanks-lottie").stop();
       setTimeout(() => {
-        if(request) {
-          $this.html("Send me price").prop("disabled", false)
+        if (request) {
+          $this.html("Send me price").prop("disabled", false);
           nextSlide();
           document.getElementById("thanks-lottie").play();
         }
